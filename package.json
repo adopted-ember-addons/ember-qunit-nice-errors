@@ -1,7 +1,7 @@
 {
   "name": "ember-cli-qunit-nice-errors",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Quinit nice errors",
   "directories": {
     "doc": "doc",
     "test": "tests"
