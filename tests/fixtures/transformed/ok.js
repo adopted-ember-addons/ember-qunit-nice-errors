@@ -21,3 +21,7 @@ test('it works', function(assert) {
   assert.ok(obj.a, 'ok: obj.a');
   assert.ok(testFunction(true), 'ok: testFunction(true)');
 });
+
+test('it works - variable', function(a) {
+  a.ok(result, 'ok: result');
+});
