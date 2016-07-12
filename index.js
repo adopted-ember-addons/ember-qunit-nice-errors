@@ -4,7 +4,7 @@
 const TestTransformFilter = require('./lib/tests-transform-filter');
 
 module.exports = {
-  name: 'ember-cli-qunit-nice-errors',
+  name: 'ember-qunit-nice-errors',
 
   postprocessTree(type, tree) {
     if (type === 'test') {
