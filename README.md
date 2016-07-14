@@ -1,26 +1,53 @@
-# Ember-cli-qunit-nice-errors
+# ember-qunit-nice-errors
+[![Build Status](https://travis-ci.org/wyeworks/ember-qunit-nice-errors.svg?branch=master)](https://travis-ci.org/wyeworks/ember-qunit-nice-errors)
 
-This README outlines the details of collaborating on this Ember addon.
+ Because expected true, result false is not enough!
+
+ This addon aims to improve the testing experience by defining a nice
+ message on those asserts that don't have one set by you.
 
 ## Installation
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+As easy as `ember install ember-qunit-nice-errors`
 
-## Running
+## Example
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+When you have a test with a failing assertion and no custom message, the default error doesn't say much.
+As you can see by the following example test and the default ouput below:
 
-## Running Tests
+```js
+import { module, test } from 'qunit';
 
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+module('Unit | ok test');
 
-## Building
+test('it works', function(assert) {
+  assert.ok(1===3);
+});
+```
+![Test failed output without addon](https://github.com/wyeworks/ember-qunit-nice-errors/raw/gh-pages/images/before.png)
 
-* `ember build`
+But with **ember-qunit-nice-errors** the message is way nicer!
+![Test failed output with addon](https://github.com/wyeworks/ember-qunit-nice-errors/raw/gh-pages/images/after.png)
 
-For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
+## Supported assertions
+
+We are currently supporting the `ok` assertion, but plan to keep adding more.
+
+## Maintainers
+
+- Diego Acosta ([@acostami](https://github.com/acostami))
+- Samanta de Barros ([@sdebarros](https://github.com/sdebarros))
+- Federico Kauffman ([@fedekau](https://github.com/fedekau))
+
+## Credits
+
+We got inspiration from
+
+- [qunit-helpful](https://github.com/bahmutov/qunit-helpful)
+- [ember-watson](https://github.com/abuiles/ember-watson)
+
+## License
+
+ember-qunit-nice-errors is licensed under the MIT license.
+
+See [LICENSE](./LICENSE) for the full license text.
