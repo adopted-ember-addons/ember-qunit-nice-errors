@@ -1,22 +1,32 @@
 {
   "name": "ember-qunit-nice-errors",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.0.1",
+  "description": "Because expected true, result false is not enough!",
+  "homepage": "https://github.com/wyeworks/ember-qunit-nice-errors#readme",
+  "bugs": "https://github.com/wyeworks/ember-qunit-nice-errors/issues",
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
   "scripts": {
     "build": "ember build",
-    "start": "ember server",
-    "test": "mocha tests/unit/lib/*-test.js",
-    "ember-test": "ember try:testall"
+    "test": "ember try:testall && mocha node-tests/*-test.js",
+    "ember-test": "ember try:testall",
+    "node-test": "mocha node-tests/*-test.js"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wyeworks/ember-qunit-nice-errors.git"
+  },
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "WyeWorks",
+  "contributors": [
+    "Samanta de Barros <samanta.debarros.cejas@gmail.com> (https://github.com/sdebarros)",
+    "Federico Kauffman <fede.kau@gmail.com> (https://github.com/fedekau)",
+    "Diego Acosta <acostami@gmail.com> (https://github.com/acostami)"
+  ],
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.2",
@@ -40,10 +50,18 @@
     "ember-resolver": "^2.0.3",
     "ember-try": "^0.2.2",
     "loader.js": "^4.0.1",
-    "mocha": "^2.5.3"
+    "mocha": "^2.5.3",
+    "mocha-jshint": "^2.3.1"
   },
   "keywords": [
-    "ember-addon"
+    "assertion",
+    "ember",
+    "ember-cli",
+    "ember-addon",
+    "error",
+    "message",
+    "qunit",
+    "test"
   ],
   "dependencies": {
     "babel-core": "^6.10.4",

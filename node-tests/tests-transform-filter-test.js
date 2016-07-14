@@ -1,4 +1,6 @@
-var Filter = require('../../../lib/tests-transform-filter')
+'use strict';
+
+var Filter = require('../lib/tests-transform-filter');
 var assert = require('chai').assert;
 var broccoliTestHelpers = require('broccoli-test-helpers');
 var makeTestHelper = broccoliTestHelpers.makeTestHelper;
@@ -12,7 +14,7 @@ describe('transform test files', function() {
   beforeEach(function() {
     build = makeTestHelper({
       fixturePath: __dirname,
-      subject(tree) {
+      subject: function(tree) {
         return new Filter(tree);
       }
     });
@@ -24,10 +26,10 @@ describe('transform test files', function() {
 
   it('applies assertion tranformation to test files', function() {
     var original, transformed;
-    var transformedFolder = '../../fixtures/dummy-test-folder-transformed';
+    var transformedFolder = 'fixtures/dummy-test-folder-transformed';
 
-    return build('../../fixtures/dummy-test-folder').then(results => {
-      files(results).forEach(file => {
+    return build('fixtures/dummy-test-folder').then(function(results) {
+      files(results).forEach(function(file) {
         original = fs.readFileSync(path.join(results.directory, file), 'utf8');
         transformed = fs.readFileSync(path.join(__dirname, transformedFolder, file), 'utf8');
 
@@ -38,5 +40,5 @@ describe('transform test files', function() {
 });
 
 function files(results) {
-  return results.files.filter(str => !/\/$/.test(str));
+  return results.files.filter(function(str) { !/\/$/.test(str); });
 }
