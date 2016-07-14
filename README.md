@@ -50,4 +50,4 @@ We got inspiration from
 
 ember-qunit-nice-errors is licensed under the MIT license.
 
-See [LICENSE](./LICENSE) for the full license text.
+See [LICENSE](./LICENSE.md) for the full license text.
