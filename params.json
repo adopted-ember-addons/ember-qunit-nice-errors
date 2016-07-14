@@ -1,0 +1,6 @@
+{
+  "name": "ember-qunit-nice-errors",
+  "tagline": "Because expected true, result false is not enough!",
+  "body": "# ember-qunit-nice-errors\r\n\r\n Because expected true, result false is not enough!\r\n\r\n This addon aims to improve the testing experience by defining a nice\r\n message on those asserts that don't have one set by you.\r\n\r\n## Installation\r\n\r\nAs easy as `ember install ember-qunit-nice-errors`\r\n\r\n## Maintainers\r\n\r\n- Diego Acosta ([@acostami](https://github.com/acostami))\r\n- Samanta de Barros ([@sdebarros](https://github.com/sdebarros))\r\n- Federico Kauffman ([@fedekau](https://github.com/fedekau))\r\n\r\n## Credits\r\n\r\nWe got inspiration from\r\n\r\n- [qunit-helpful](https://github.com/bahmutov/qunit-helpful)\r\n- [ember-watson](https://github.com/abuiles/ember-watson)\r\n\r\n## License\r\n\r\nember-qunit-nice-errors is licensed under the MIT license.\r\n\r\nSee [LICENSE](./LICENSE) for the full license text.\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
