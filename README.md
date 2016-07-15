@@ -31,7 +31,12 @@ But with **ember-qunit-nice-errors** the message is way nicer!
 
 ## Supported assertions
 
-We are currently supporting the `ok` assertion, but plan to keep adding more.
+We are currently supporting the following assertions
+
+* `ok`
+* `notOk`
+
+But plan to keep adding more.
 
 ## Maintainers
 
