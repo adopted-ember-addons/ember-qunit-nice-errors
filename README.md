@@ -1,5 +1,6 @@
 # ember-qunit-nice-errors
 [![Build Status](https://travis-ci.org/wyeworks/ember-qunit-nice-errors.svg?branch=master)](https://travis-ci.org/wyeworks/ember-qunit-nice-errors)
+[![CodeClimate](https://codeclimate.com/repos/5787c7854f9655117c000601/badges/952448cd7794cef82460/gpa.svg)](https://codeclimate.com/repos/5787c7854f9655117c000601/feed)
 
  Because expected true, result false is not enough!
 
