@@ -19,4 +19,8 @@ describe('transform qunit assertions', function() {
   it('transforms: adds message to notOk assertion without message', function() {
     assertOutput('not-ok');
   });
+
+  it('transforms: adds message to equal assertion without message', function() {
+    assertOutput('equal');
+  });
 });
