@@ -8,7 +8,7 @@ var cleanupBuilders = broccoliTestHelpers.cleanupBuilders;
 var fs = require('fs');
 var path = require('path');
 
-describe('transform test files', function() {
+describe('transform test files on build', function() {
   var build;
 
   beforeEach(function() {
@@ -24,7 +24,7 @@ describe('transform test files', function() {
     cleanupBuilders();
   }),
 
-  it('applies assertion tranformation to test files', function() {
+  it('transforms assertions on test files', function() {
     var original, transformed;
     var transformedFolder = 'fixtures/dummy-test-folder-transformed';
 

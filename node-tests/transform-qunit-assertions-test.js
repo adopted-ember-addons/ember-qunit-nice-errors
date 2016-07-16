@@ -23,15 +23,19 @@ function assertOutput(fileName) {
 }
 
 describe('transform qunit assertions', function() {
-  it('transforms: adds message to ok assertion without message', function() {
+  it('transforms ok assertions', function() {
     assertOutput('ok');
   });
 
-  it('transforms: adds message to notOk assertion without message', function() {
+  it('transforms not-ok assertions', function() {
     assertOutput('not-ok');
   });
 
-  it('transforms: adds message to equal assertion without message', function() {
+  it('transforms equal assertions', function() {
     assertOutput('equal');
+  });
+
+  it('transforms not-equal assertions', function() {
+    assertOutput('not-equal');
   });
 });
