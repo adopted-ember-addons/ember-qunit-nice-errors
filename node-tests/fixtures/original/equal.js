@@ -23,5 +23,5 @@ test('it works', function(assert) {
 });
 
 test('it works - variable', function(a) {
-  a.equal(result, result);
+   a.equal(result, result);
 });

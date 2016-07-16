@@ -11,10 +11,10 @@ function prettify(source) {
 }
 
 function assertOutput(fileName) {
-  var source = fs.readFileSync('./node-tests/fixtures/original/' + fileName + '.js', 'utf8');
-  var transformed = fs.readFileSync('./node-tests/fixtures/transformed/' + fileName + '.js', 'utf8');
+  var source = fs.readFileSync('./node-tests/fixtures/original/' + fileName, 'utf8');
+  var transformed = fs.readFileSync('./node-tests/fixtures/transformed/' + fileName, 'utf8');
 
-  var transformedSource = transform(source);
+  var transformedSource = transform(fileName, source);
 
   var prettyTransformedSource = prettify(transformedSource);
   var prettyTransformedExpected = prettify(transformed);
@@ -24,14 +24,14 @@ function assertOutput(fileName) {
 
 describe('transform qunit assertions', function() {
   it('transforms: adds message to ok assertion without message', function() {
-    assertOutput('ok');
+    assertOutput('ok.js');
   });
 
   it('transforms: adds message to notOk assertion without message', function() {
-    assertOutput('not-ok');
+    assertOutput('not-ok.js');
   });
 
   it('transforms: adds message to equal assertion without message', function() {
-    assertOutput('equal');
+    assertOutput('equal.js');
   });
 });

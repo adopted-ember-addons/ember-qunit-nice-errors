@@ -20,8 +20,11 @@ test('it works', function(assert) {
   assert.ok(function() { return true; }(), 'testing a function');
   assert.ok(obj.a);
   assert.ok(testFunction(true));
+  assert.ok((function() {
+    return true;
+  })());
 });
 
 test('it works - variable', function(a) {
-  a.ok(result);
+   a.ok(result);
 });
