@@ -36,6 +36,7 @@ We are currently supporting the following assertions
 
 * `ok`
 * `notOk`
+* `equal`
 
 But plan to keep adding more.
 
