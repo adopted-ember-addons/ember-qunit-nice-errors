@@ -30,7 +30,6 @@ describe('transform test files', function() {
 
     return build('fixtures/dummy-test-folder').then(function(results) {
       files(results).forEach(function(file) {
-        console.log(file);
         original = fs.readFileSync(path.join(results.directory, file), 'utf8');
         transformed = fs.readFileSync(path.join(__dirname, transformedFolder, file), 'utf8');
 
