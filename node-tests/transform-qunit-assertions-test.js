@@ -34,4 +34,8 @@ describe('transform qunit assertions', function() {
   it('transforms: adds message to equal assertion without message', function() {
     assertOutput('equal.js');
   });
+
+  it('transforms not-equal assertions', function() {
+    assertOutput('not-equal.js');
+  });
 });
