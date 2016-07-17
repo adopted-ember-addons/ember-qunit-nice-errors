@@ -13,7 +13,7 @@ test('it works', function(assert) {
       obj = { a: true, b: false };
 
   assert.equal(result, true, 'assert.equal(result, true) at equal.js:15:2');
-  assert.equal((function() { return true; })(), (function() { return true; })(),'assert.equal((function() { return true; })(), (function() { return true; })()) at equal.js:16:2');
+  assert.equal((function() { return true; })(), (function() { return true; })(), 'assert.equal((function() { return true; })(), (function() { return true; })()) at equal.js:16:2');
   assert.equal(1, 1, 'testing equality');
   assert.equal(true, true, 'assert.equal(true, true) at equal.js:18:2');
   assert.equal((1+2+3)-3*5*6, -84, 'assert.equal((1+2+3)-3*5*6, -84) at equal.js:19:2');
@@ -23,5 +23,5 @@ test('it works', function(assert) {
 });
 
 test('it works - variable', function(a) {
-  a.equal(result, result, 'a.equal(result, result) at equal.js:26:3');
+   a.equal(result, result, 'a.equal(result, result) at equal.js:26:3');
 });
