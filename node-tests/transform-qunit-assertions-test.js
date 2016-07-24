@@ -11,8 +11,8 @@ function prettify(source) {
 }
 
 function assertOutput(fileName, addFile) {
-  var source = fs.readFileSync('./node-tests/fixtures/original/' + fileName, 'utf8');
-  var transformed = fs.readFileSync('./node-tests/fixtures/transformed/' + fileName, 'utf8');
+  var source = fs.readFileSync('./node-tests/fixtures/original/unit/' + fileName, 'utf8');
+  var transformed = fs.readFileSync('./node-tests/fixtures/transformed/unit/' + fileName, 'utf8');
   var options = addFile ? { file: fileName } : null;
 
   var transformedSource = transform(source, options);
