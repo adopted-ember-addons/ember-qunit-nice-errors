@@ -38,6 +38,8 @@ We are currently supporting the following assertions
 * `notOk`
 * `equal`
 * `notEqual`
+* `deepEqual`
+* `notDeepEqual`
 
 But plan to keep adding more.
 
