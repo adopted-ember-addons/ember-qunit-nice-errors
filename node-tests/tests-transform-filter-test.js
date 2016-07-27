@@ -32,7 +32,7 @@ describe('transform test files on build', function() {
   });
 
   it('transforms assertions with file info option', function() {
-    return build('fixtures/original/integration/with-file', { fileInfo: true }).then(function(results) {
+    return build('fixtures/original/integration/with-file', { showFileInfo: true }).then(function(results) {
       assertBuild(results, 'fixtures/transformed/integration/with-file');
     });
   });
