@@ -46,4 +46,12 @@ describe('transform qunit assertions', function() {
   it('transforms not-deep-equal assertions', function() {
     assertOutput('not-deep-equal');
   });
+
+  it('transforms prop-equal assertions', function() {
+    assertOutput('prop-equal');
+  });
+
+  it('transforms not-prop-equal assertions', function() {
+    assertOutput('not-prop-equal');
+  });
 });

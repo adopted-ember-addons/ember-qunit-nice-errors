@@ -32,7 +32,7 @@ But with **ember-qunit-nice-errors** the message is way nicer!
 
 ## Supported assertions
 
-We are currently supporting the following assertions
+We are currently supporting all the assertions provided by QUnit, those are:
 
 * `ok`
 * `notOk`
@@ -40,8 +40,9 @@ We are currently supporting the following assertions
 * `notEqual`
 * `deepEqual`
 * `notDeepEqual`
+* `propEqual`
+* `notPropEqual`
 
-But plan to keep adding more.
 
 ## Maintainers
 
