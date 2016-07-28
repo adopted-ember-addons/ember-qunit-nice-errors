@@ -42,6 +42,8 @@ We are currently supporting all the assertions provided by QUnit, those are:
 * `notDeepEqual`
 * `propEqual`
 * `notPropEqual`
+* `strictEqual`
+* `notStrictEqual`
 
 
 ## Maintainers
