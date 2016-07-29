@@ -1,6 +1,6 @@
 {
   "name": "ember-qunit-nice-errors",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Because expected true, result false is not enough!",
   "homepage": "https://github.com/wyeworks/ember-qunit-nice-errors#readme",
   "bugs": "https://github.com/wyeworks/ember-qunit-nice-errors/issues",
