@@ -30,6 +30,29 @@ test('it works', function(assert) {
 But with **ember-qunit-nice-errors** the message is way nicer!
 ![Test failed output with addon](https://github.com/wyeworks/ember-qunit-nice-errors/raw/gh-pages/images/after.png)
 
+## Configuration
+
+### showFileInfo
+
+If you want your error messages to include the original test file, line and column where the fail assertion is, just add the following configuration on your `config/environment.js` file:
+
+```js
+ENV['ember-qunit-nice-errors'] = {
+  showFileInfo: true
+};
+```
+Your error messages will go from `assert.ok(false)` to `assert.ok(false) at my-app/tests/unit/ok-test.js:17:2`
+
+Also note you can enable this only for certain environments:
+
+```js
+if (environment === 'development') {
+  ENV['ember-qunit-nice-errors'] = {
+    showFileInfo: true
+  };
+}
+```
+
 ## Supported assertions
 
 We are currently supporting all the assertions provided by QUnit, those are:
