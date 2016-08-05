@@ -34,7 +34,7 @@ But with **ember-qunit-nice-errors** the message is way nicer!
 
 ### showFileInfo
 
-If you want your error messages to include the original test file, line and column where the fail assertion is, just add the following configuration on your `config/environment.js` file:
+If you want your error messages to include the original test file, line and column where the failed assertion is, just add the following configuration on your `config/environment.js` file:
 
 ```js
 ENV['ember-qunit-nice-errors'] = {
