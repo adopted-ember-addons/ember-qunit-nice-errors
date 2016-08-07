@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "ember build",
-    "test": "ember try:testall && mocha node-tests/*-test.js",
+    "test": "ember try:testall && npm run node-test",
     "ember-test": "ember try:testall",
     "node-test": "mocha node-tests/*-test.js"
   },
