@@ -36,6 +36,18 @@ describe('transform test files on build', function() {
       assertBuild(results, 'fixtures/transformed/integration/with-file');
     });
   });
+
+  it('transforms assertions with override completion mode', function() {
+    return build('fixtures/original/integration/completion-mode', { completionMode: 'override' }).then(function(results) {
+      assertBuild(results, 'fixtures/transformed/integration/completion-mode');
+    });
+  });
+
+  it('transforms assertions with override completion mode and adds file and line number', function() {
+    return build('fixtures/original/integration/completion-with-file', { showFileInfo: true, completionMode: 'override' }).then(function(results) {
+      assertBuild(results, 'fixtures/transformed/integration/completion-with-file');
+    });
+  });
 });
 
 function assertBuild(results, transformedFolder) {
