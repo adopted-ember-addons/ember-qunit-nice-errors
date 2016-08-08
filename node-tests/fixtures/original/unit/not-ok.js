@@ -19,8 +19,11 @@ test('it works', function(assert) {
   assert.notOk(function() { return true; }(), 'testing a function');
   assert.notOk(obj.a);
   assert.notOk(testFunction(true));
+  assert.notOk((function() {
+    return true;
+  })());
 });
 
 test('it works - variable', function(a) {
-  a.notOk(result);
+   a.notOk(result);
 });

@@ -10,11 +10,13 @@ function prettify(source) {
   return recast.prettyPrint(ast).code;
 }
 
-function assertOutput(fileName) {
-  var source = fs.readFileSync('./node-tests/fixtures/original/' + fileName + '.js', 'utf8');
-  var transformed = fs.readFileSync('./node-tests/fixtures/transformed/' + fileName + '.js', 'utf8');
+function assertOutput(fileName, addFile) {
+  fileName = fileName + '.js';
+  var source = fs.readFileSync('./node-tests/fixtures/original/unit/' + fileName, 'utf8');
+  var transformed = fs.readFileSync('./node-tests/fixtures/transformed/unit/' + fileName, 'utf8');
+  var options = addFile ? { file: fileName } : null;
 
-  var transformedSource = transform(source);
+  var transformedSource = transform(source, options);
 
   var prettyTransformedSource = prettify(transformedSource);
   var prettyTransformedExpected = prettify(transformed);
@@ -27,7 +29,7 @@ describe('transform qunit assertions', function() {
     assertOutput('ok');
   });
 
-  it('transforms not-ok assertions', function() {
+  it('transforms notOk assertions', function() {
     assertOutput('not-ok');
   });
 
@@ -37,6 +39,10 @@ describe('transform qunit assertions', function() {
 
   it('transforms not-equal assertions', function() {
     assertOutput('not-equal');
+  });
+
+  it('adds file path and line number of assertion based on options', function() {
+    assertOutput('with-file-line', true);
   });
 
   it('transforms deep-equal assertions', function() {

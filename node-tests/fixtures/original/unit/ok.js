@@ -12,16 +12,19 @@ test('it works', function(assert) {
   let result = testHelper([42]),
       obj = { a: true, b: false };
 
-  assert.ok(result, 'ok: result');
-  assert.ok((function() { return true; })(), 'ok: (function() { return true; })()');
+  assert.ok(result);
+  assert.ok((function() { return true; })());
   assert.ok(1===1, 'testing equality');
-  assert.ok(true, 'ok: true');
-  assert.ok((1+2+3)-3*5*6, 'ok: (1+2+3)-3*5*6');
+  assert.ok(true);
+  assert.ok((1+2+3)-3*5*6);
   assert.ok(function() { return true; }(), 'testing a function');
-  assert.ok(obj.a, 'ok: obj.a');
-  assert.ok(testFunction(true), 'ok: testFunction(true)');
+  assert.ok(obj.a);
+  assert.ok(testFunction(true));
+  assert.ok((function() {
+    return true;
+  })());
 });
 
 test('it works - variable', function(a) {
-  a.ok(result, 'ok: result');
+   a.ok(result);
 });
