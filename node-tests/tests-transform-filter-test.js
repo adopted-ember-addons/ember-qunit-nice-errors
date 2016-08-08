@@ -16,7 +16,7 @@ describe('transform test files on build', function() {
     build = makeTestHelper({
       fixturePath: __dirname,
       subject: function(tree, options) {
-        return new Filter(tree, options);
+        return new Filter(tree, options || {});
       }
     });
   }),
