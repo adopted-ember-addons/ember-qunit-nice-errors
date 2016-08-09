@@ -53,6 +53,18 @@ if (environment === 'development') {
 }
 ```
 
+### completionMode
+
+If you fully trust us you can add this option to replace all assertions within your project tests, just add this to your configuration on your `config/environment.js` file:
+
+```js
+ENV['ember-qunit-nice-errors'] = {
+  completionMode: 'override'
+};
+```
+
+Don't worry, the override will still show your orginal messages, it is not a destructive operation!
+
 ## Supported assertions
 
 We are currently supporting all the assertions provided by QUnit, those are:
