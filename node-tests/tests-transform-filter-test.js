@@ -37,14 +37,14 @@ describe('transform test files on build', function() {
     });
   });
 
-  it('transforms assertions with override completion mode', function() {
-    return build('fixtures/original/integration/completion-mode', { completionMode: 'override' }).then(function(results) {
+  it('transforms assertions with complete existing messages option', function() {
+    return build('fixtures/original/integration/completion-mode', { completeExistingMessages: true }).then(function(results) {
       assertBuild(results, 'fixtures/transformed/integration/completion-mode');
     });
   });
 
-  it('transforms assertions with override completion mode and adds file and line number', function() {
-    return build('fixtures/original/integration/completion-with-file', { showFileInfo: true, completionMode: 'override' }).then(function(results) {
+  it('transforms assertions with complete existing messages and adds file and line number', function() {
+    return build('fixtures/original/integration/completion-with-file', { showFileInfo: true, completeExistingMessages: true }).then(function(results) {
       assertBuild(results, 'fixtures/transformed/integration/completion-with-file');
     });
   });
