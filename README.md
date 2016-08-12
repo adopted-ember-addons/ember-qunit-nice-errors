@@ -53,6 +53,19 @@ if (environment === 'development') {
 }
 ```
 
+### completeExistingMessages
+
+If you fully trust us you can add this option to replace all assertions within your project tests, just add this to your configuration on your `config/environment.js` file:
+
+```js
+ENV['ember-qunit-nice-errors'] = {
+  completeExistingMessages: true
+};
+```
+
+Don't worry, the override will still show your orginal messages, it is not a destructive operation!
+The messages that you already have will go from `assert.ok(1 === 1, 'one should be one')` to `assert.ok(1 === 1, "assert.ok(1 === 1, 'one should be one')")`.
+
 ## Supported assertions
 
 We are currently supporting all the assertions provided by QUnit, those are:
