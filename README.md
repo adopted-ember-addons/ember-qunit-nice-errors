@@ -96,8 +96,9 @@ We are currently supporting all the assertions provided by QUnit, those are:
 ## Maintainers
 
 - Diego Acosta ([@acostami](https://github.com/acostami))
-- Samanta de Barros ([@sdebarros](https://github.com/sdebarros))
 - Federico Kauffman ([@fedekau](https://github.com/fedekau))
+- Samanta de Barros ([@sdebarros](https://github.com/sdebarros))
+- Santiago Ferreira ([@san650](https://github.com/san650))
 
 ## Credits
 
