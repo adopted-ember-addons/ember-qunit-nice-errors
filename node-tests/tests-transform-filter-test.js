@@ -48,16 +48,26 @@ describe('transform test files on build', function() {
       assertBuild(results, 'fixtures/transformed/integration/completion-with-file');
     });
   });
+
+  it('ignores files with unsopported features or parse errors', function() {
+    return build('fixtures/original/integration/unsupported-file').then(function(results) {
+      assertBuild(results, 'fixtures/original/integration/unsupported-file', true);
+    });
+  });
 });
 
-function assertBuild(results, transformedFolder) {
+function assertBuild(results, transformedFolder, exactMatch) {
   var original, transformed;
 
   files(results).forEach(function(file) {
     original = fs.readFileSync(path.join(results.directory, file), 'utf8');
     transformed = fs.readFileSync(path.join(__dirname, transformedFolder, file), 'utf8');
 
-    assert.equal(prettify(original), prettify(transformed));
+    if (exactMatch) {
+      assert.equal(original, transformed);
+    } else {
+      assert.equal(prettify(original), prettify(transformed));
+    }
   });
 }
 
