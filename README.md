@@ -64,7 +64,18 @@ ENV['ember-qunit-nice-errors'] = {
 ```
 
 Don't worry, the override will still show your orginal messages, it is not a destructive operation!
-The messages that you already have will go from `assert.ok(1 === 1, 'one should be one')` to `assert.ok(1 === 1, "assert.ok(1 === 1, 'one should be one')")`.
+
+The following example ilustrates what is the result of using the option `completeExistingMessages`.
+
+#### Before
+```js
+assert.ok(1 === 1, 'one should be one');
+```
+
+#### After
+```js
+assert.ok(1 === 1, "assert.ok(1 === 1, 'one should be one')");
+```
 
 ## Supported assertions
 
