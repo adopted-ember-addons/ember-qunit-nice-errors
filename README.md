@@ -41,7 +41,16 @@ ENV['ember-qunit-nice-errors'] = {
   showFileInfo: true
 };
 ```
-Your error messages will go from `assert.ok(false)` to `assert.ok(false) at my-app/tests/unit/ok-test.js:17:2`
+
+##### Before
+```js
+assert.ok(false)
+```
+
+##### After
+```js
+assert.ok(false) at my-app/tests/unit/ok-test.js:17:2
+```
 
 Also note you can enable this only for certain environments:
 
@@ -67,12 +76,12 @@ Don't worry, the override will still show your orginal messages, it is not a des
 
 The following example ilustrates what is the result of using the option `completeExistingMessages`.
 
-#### Before
+##### Before
 ```js
 assert.ok(1 === 1, 'one should be one');
 ```
 
-#### After
+##### After
 ```js
 assert.ok(1 === 1, "assert.ok(1 === 1, 'one should be one')");
 ```
