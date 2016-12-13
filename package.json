@@ -51,7 +51,8 @@
     "ember-resolver": "^2.0.3",
     "loader.js": "^4.0.1",
     "mocha": "^2.5.3",
-    "mocha-jshint": "^2.3.1"
+    "mocha-jshint": "^2.3.1",
+    "ember-cli-test-loader": "1.1.0"
   },
   "keywords": [
     "assertion",
