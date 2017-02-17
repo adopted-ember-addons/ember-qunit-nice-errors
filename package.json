@@ -70,9 +70,9 @@
   },
   "dependencies": {
     "babel-core": "^6.10.4",
-    "broccoli-filter": "^1.2.3",
+    "broccoli-filter": "^1.2.4",
     "ember-cli-babel": "^5.1.7",
-    "recast": "^0.11.10"
+    "recast": "^0.11.22"
   },
   "engines": {
     "node": ">= 4.0.0"
