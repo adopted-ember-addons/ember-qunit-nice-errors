@@ -4,55 +4,13 @@
   "description": "Because expected true, result false is not enough!",
   "homepage": "https://github.com/wyeworks/ember-qunit-nice-errors#readme",
   "bugs": "https://github.com/wyeworks/ember-qunit-nice-errors/issues",
-  "directories": {
-    "doc": "doc",
-    "test": "tests"
-  },
-  "scripts": {
-    "build": "ember build",
-    "test": "ember try:testall && npm run node-test",
-    "ember-test": "ember try:testall",
-    "node-test": "mocha node-tests/*-test.js"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/wyeworks/ember-qunit-nice-errors.git"
   },
-  "engines": {
-    "node": ">= 0.10.0"
-  },
-  "author": "WyeWorks",
-  "contributors": [
-    "Samanta de Barros <samanta.debarros.cejas@gmail.com> (https://github.com/sdebarros)",
-    "Federico Kauffman <fede.kau@gmail.com> (https://github.com/fedekau)",
-    "Diego Acosta <acostami@gmail.com> (https://github.com/acostami)",
-    "Santiago Ferreira <san650@gmail.com> (https://github.com/san650)"
-  ],
-  "license": "MIT",
-  "devDependencies": {
-    "broccoli-asset-rev": "^2.4.2",
-    "broccoli-test-helpers": "0.0.9",
-    "chai": "^3.5.0",
-    "ember-ajax": "0.7.1",
-    "ember-cli": "2.4.3",
-    "ember-cli-app-version": "^1.0.0",
-    "ember-cli-dependency-checker": "^1.2.0",
-    "ember-cli-htmlbars": "^1.0.3",
-    "ember-cli-htmlbars-inline-precompile": "^0.3.1",
-    "ember-cli-inject-live-reload": "^1.4.0",
-    "ember-cli-qunit": "^1.4.0",
-    "ember-cli-release": "0.2.8",
-    "ember-cli-sri": "^2.1.0",
-    "ember-cli-uglify": "^1.2.0",
-    "ember-data": "^2.4.2",
-    "ember-disable-prototype-extensions": "^1.1.0",
-    "ember-export-application-global": "^1.0.5",
-    "ember-load-initializers": "^0.5.1",
-    "ember-resolver": "^2.0.3",
-    "ember-try": "^0.2.2",
-    "loader.js": "^4.0.1",
-    "mocha": "^2.5.3",
-    "mocha-jshint": "^2.3.1"
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
   },
   "keywords": [
     "assertion",
@@ -64,11 +22,60 @@
     "qunit",
     "test"
   ],
+  "scripts": {
+    "build": "ember build",
+    "test": "ember try:each && npm run node-test",
+    "ember-test": "ember try:each",
+    "node-test": "mocha node-tests/*-test.js",
+    "start": "ember server"
+  },
+  "author": "WyeWorks",
+  "contributors": [
+    "Samanta de Barros <samanta.debarros.cejas@gmail.com> (https://github.com/sdebarros)",
+    "Federico Kauffman <fede.kau@gmail.com> (https://github.com/fedekau)",
+    "Diego Acosta <acostami@gmail.com> (https://github.com/acostami)",
+    "Santiago Ferreira <san650@gmail.com> (https://github.com/san650)"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "broccoli-test-helpers": "0.0.9",
+    "chai": "^3.5.0",
+    "broccoli-asset-rev": "^2.4.5",
+    "ember-ajax": "^2.4.1",
+    "ember-cli": "2.11.1",
+    "ember-cli-app-version": "^2.0.0",
+    "ember-cli-dependency-checker": "^1.3.0",
+    "ember-cli-htmlbars": "^1.1.1",
+    "ember-cli-htmlbars-inline-precompile": "^0.3.6",
+    "ember-cli-inject-live-reload": "^1.4.1",
+    "ember-cli-jshint": "^2.0.1",
+    "ember-cli-qunit": "^3.0.1",
+    "ember-cli-release": "^0.2.9",
+    "ember-cli-shims": "^1.0.2",
+    "ember-cli-sri": "^2.1.0",
+    "ember-cli-test-loader": "^1.1.0",
+    "ember-cli-uglify": "^1.2.0",
+    "ember-data": "^2.11.0",
+    "ember-disable-prototype-extensions": "^1.1.0",
+    "ember-export-application-global": "^1.0.5",
+    "ember-load-initializers": "^0.6.0",
+    "ember-resolver": "^2.0.3",
+    "mocha": "^2.5.3",
+    "mocha-jshint": "^2.3.1",
+    "ember-source": "~2.11.0",
+    "ember-welcome-page": "^2.0.2",
+    "loader.js": "^4.0.10"
+  },
+  "dependencies": {
+  },
   "dependencies": {
     "babel-core": "^6.10.4",
     "broccoli-filter": "^1.2.3",
-    "ember-cli-babel": "^5.1.6",
+    "ember-cli-babel": "^5.1.7",
     "recast": "^0.11.10"
+  },
+  "engines": {
+    "node": ">= 4.0.0"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
