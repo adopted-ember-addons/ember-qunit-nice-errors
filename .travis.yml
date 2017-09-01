@@ -25,14 +25,12 @@ matrix:
 
 before_install:
   - npm config set spin false
-  - npm install -g bower phantomjs-prebuilt
-  - bower --version
+  - npm install -g phantomjs-prebuilt
   - phantomjs --version
   - npm install -g npm@4
   - npm --version
   - npm install -g phantomjs-prebuilt
   - npm install
-  - bower install
 
 script:
   #  to the addon's original dependency state, skipping "cleanup".
