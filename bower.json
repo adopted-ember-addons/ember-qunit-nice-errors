@@ -1,4 +1,9 @@
 {
   "name": "ember-qunit-nice-errors",
-  "dependencies": {}
+  "dependencies": {
+    "ember": "components/ember#beta"
+  },
+  "resolutions": {
+    "ember": "beta"
+  }
 }

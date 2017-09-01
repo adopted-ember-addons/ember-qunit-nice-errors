@@ -16,7 +16,7 @@ describe('Acceptance', function() {
 
         assert.include(data, "assert.ok(fooTruthy, 'assert.ok(fooTruthy)');");
         assert.include(data, "assert.notOk(!fooTruthy, 'assert.notOk(!fooTruthy)');");
-        assert.include(data, "assert.equal(5 * 2, 2 * 5, 'assert.equal(5*2, 2*5)');");
+        assert.include(data, "assert.equal(5 * 2, 2 * 5, 'assert.equal(5 * 2, 2 * 5)');");
 
         done();
       });
