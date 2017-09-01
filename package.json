@@ -38,9 +38,9 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "ember-cli-babel": "^6.3.0",
     "babel-core": "^6.10.4",
     "broccoli-filter": "^1.2.4",
+    "ember-cli-babel": "^6.3.0",
     "recast": "^0.11.22"
   },
   "devDependencies": {
@@ -58,15 +58,15 @@
     "ember-cli-shims": "^1.1.0",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^1.2.0",
-    "mocha": "^2.5.3",
-    "mocha-jshint": "^2.3.1",
     "ember-disable-prototype-extensions": "^1.1.2",
     "ember-export-application-global": "^2.0.0",
     "ember-load-initializers": "^1.0.0",
     "ember-resolver": "^4.0.0",
     "ember-source": "~2.14.1",
     "ember-welcome-page": "^3.0.0",
-    "loader.js": "^4.2.3"
+    "loader.js": "^4.2.3",
+    "mocha": "^2.5.3",
+    "mocha-eslint": "^4.1.0"
   },
   "engines": {
     "node": ">= 4.0.0"

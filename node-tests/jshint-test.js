@@ -1,3 +1,2 @@
-require('mocha-jshint')({
-  paths: ['node-tests/**/*.js']
-});
+/*eslint-env node*/
+require('mocha-eslint')([ 'node-tests/**/*.js' ]);

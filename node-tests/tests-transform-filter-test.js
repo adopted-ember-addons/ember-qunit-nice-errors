@@ -1,3 +1,4 @@
+/*eslint-env node, mocha*/
 'use strict';
 
 var Filter = require('../lib/tests-transform-filter');
