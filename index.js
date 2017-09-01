@@ -1,4 +1,4 @@
-/* jshint node: true */
+/* eslint-env node */
 'use strict';
 
 var TestTransformFilter = require('./lib/tests-transform-filter');
