@@ -1,5 +1,8 @@
-languages:
-  JavaScript: true
+engines:
+  eslint:
+    enabled: true
+    config:
+      config: .eslintrc.js
 exclude_paths:
   - node-tests/fixtures/*
   - tests/dummy/*
