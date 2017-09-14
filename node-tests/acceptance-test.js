@@ -1,26 +1,27 @@
 /*eslint-env node, mocha*/
 var assert = require('chai').assert;
-var exec = require('child_process').exec;
-var fs = require('fs');
+var AddonTestApp = require('ember-cli-addon-tests').AddonTestApp;
+var denodeify = require('denodeify');
+var readFile = denodeify(require('fs').readFile);
 
 describe('Acceptance', function() {
-  it('transforms assertions on build', function(done) {
-    this.timeout(300000);
+  this.timeout(300000);
+  var app;
 
-    exec('ember build', function(_, stdout) {
-      assert.include(stdout, 'Built project successfully. Stored in "dist/".');
+  before(function() {
+    app = new AddonTestApp();
+    return app.create('dummy', {
+      fixturesPath: 'tests'
+    }).then(function() {
+      return app.runEmberCommand('build');
+    });
+  });
 
-      fs.readFile('./dist/assets/tests.js', 'utf8', function(err, data) {
-        if (err) {
-          throw err;
-        }
-
-        assert.include(data, "assert.ok(fooTruthy, 'assert.ok(fooTruthy)');");
-        assert.include(data, "assert.notOk(!fooTruthy, 'assert.notOk(!fooTruthy)');");
-        assert.include(data, "assert.equal(5 * 2, 2 * 5, 'assert.equal(5*2, 2*5)');");
-
-        done();
-      });
+  it('transforms assertions on build', function() {
+    return readFile(app.filePath('/dist/assets/tests.js'), 'utf8').then(function (data) {
+      assert.include(data, "assert.ok(fooTruthy, 'assert.ok(fooTruthy)');");
+      assert.include(data, "assert.notOk(!fooTruthy, 'assert.notOk(!fooTruthy)');");
+      assert.include(data, "assert.equal(5 * 2, 2 * 5, 'assert.equal(5*2, 2*5)');");
     });
   });
 });
