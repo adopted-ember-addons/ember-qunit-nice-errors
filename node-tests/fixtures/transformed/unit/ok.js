@@ -8,11 +8,14 @@ function testFunction(a) {
 module('Unit | Helper | test helper');
 
 //Replace this with your real tests.
-test('it works', function(assert) {
+test('it works', async function(assert) {
   let result = testHelper([42]),
       obj = { a: true, b: false };
 
-  assert.ok(result, 'assert.ok(result)');
+  assert.ok(await Promise.resolve(2), 'assert.ok(await Promise.resolve(2))');
+  assert.ok(() => { return true }, 'assert.ok(() => { return true })');
+  assert.ok(class Person {}, 'assert.ok(class Person {})');
+  assert.ok(...arr, 'assert.ok(...arr)');
   assert.ok((function() { return true; })(), 'assert.ok((function() { return true; })())');
   assert.ok(1===1, 'testing equality');
   assert.ok(true, 'assert.ok(true)');
