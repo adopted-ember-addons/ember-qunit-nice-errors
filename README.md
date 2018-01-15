@@ -1,11 +1,11 @@
 # ember-qunit-nice-errors
 [![Build Status](https://travis-ci.org/wyeworks/ember-qunit-nice-errors.svg?branch=master)](https://travis-ci.org/wyeworks/ember-qunit-nice-errors)
-[![CodeClimate](https://codeclimate.com/repos/5787c7854f9655117c000601/badges/952448cd7794cef82460/gpa.svg)](https://codeclimate.com/repos/5787c7854f9655117c000601/feed)
+<a href="https://codeclimate.com/github/wyeworks/ember-qunit-nice-errors/maintainability"><img src="https://api.codeclimate.com/v1/badges/6e06176457a3027d53f3/maintainability" /></a>
 
- Because expected true, result false is not enough!
+Because expected true, result false is not enough!
 
- This addon aims to improve the testing experience by defining a nice
- message on those asserts that don't have one set by you.
+This addon aims to improve the testing experience by defining a nice
+message on those asserts that don't have one set by you.
 
 ## Installation
 
