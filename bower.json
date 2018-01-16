@@ -1,0 +1,6 @@
+{
+  "name": "ember-qunit-nice-errors",
+  "dependencies": {
+    "ember": "~2.4.0"
+  }
+}
