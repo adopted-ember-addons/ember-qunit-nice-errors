@@ -39,7 +39,7 @@
   "license": "MIT",
   "dependencies": {
     "babel-core": "^6.10.4",
-    "broccoli-filter": "^1.2.4",
+    "broccoli-persistent-filter": "^1.4.3",
     "ember-cli-babel": "^6.3.0",
     "recast": "^0.13.0"
   },
