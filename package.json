@@ -33,7 +33,7 @@
   "scripts": {
     "build": "ember build",
     "ember-test": "ember try:each",
-    "lint:js": "eslint ./*.js addon addon-test-support app config lib server test-support tests",
+    "lint:js": "eslint ./*.js ./**/*.js",
     "node-test": "mocha node-tests/*-test.js",
     "start": "ember serve",
     "test": "ember try:each && npm run node-test"
