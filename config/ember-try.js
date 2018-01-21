@@ -69,6 +69,13 @@ module.exports = {
       npm: {
         devDependencies: {}
       }
+    },
+    {
+      name: 'node-tests',
+      command: 'npm run node-test',
+      npm: {
+        devDependencies: {}
+      }
     }
   ]
 };
