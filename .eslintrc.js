@@ -26,11 +26,10 @@ module.exports = {
         'config/**/*.js',
         'tests/dummy/config/**/*.js',
         'lib/**/*.js',
-        'node-tests/**/*.js',
       ],
       excludedFiles: [
         'app/**',
-        'addon/**'
+        'addon/**',
       ],
       parserOptions: {
         sourceType: 'script',
@@ -52,7 +51,24 @@ module.exports = {
       excludedFiles: ['tests/dummy/**/*.js'],
       env: {
         embertest: true
-      }
+      },
+      rules: Object.assign({}, require('eslint-plugin-ember').configs.recommended.rules, {
+        "ember/named-functions-in-promises": "off",
+      })
+    },
+
+    // node test files
+    {
+      files: ['node-tests/*.js', 'node-tests/**/*.js'],
+      excludedFiles: ['node-tests/fixtures/**/*.js'],
+      env: {
+        node: true,
+        mocha: true,
+      },
+      rules: Object.assign({}, require('eslint-plugin-node').configs.recommended.rules, {
+        "node/no-unpublished-require": "off",
+        "node/no-extraneous-require": "off",
+      })
     }
   ]
 };
