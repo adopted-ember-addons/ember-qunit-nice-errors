@@ -2,33 +2,19 @@
   "name": "ember-qunit-nice-errors",
   "version": "1.1.3",
   "description": "Because expected true, result false is not enough!",
-  "homepage": "https://github.com/wyeworks/ember-qunit-nice-errors#readme",
-  "bugs": "https://github.com/wyeworks/ember-qunit-nice-errors/issues",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/wyeworks/ember-qunit-nice-errors.git"
-  },
-  "directories": {
-    "doc": "doc",
-    "test": "tests"
-  },
   "keywords": [
     "assertion",
     "ember",
-    "ember-cli",
     "ember-addon",
+    "ember-cli",
     "error",
     "message",
     "qunit",
     "test"
   ],
-  "scripts": {
-    "build": "ember build",
-    "test": "ember try:each && npm run node-test",
-    "ember-test": "ember try:each",
-    "node-test": "mocha node-tests/*-test.js",
-    "start": "ember server"
-  },
+  "homepage": "https://github.com/wyeworks/ember-qunit-nice-errors#readme",
+  "bugs": "https://github.com/wyeworks/ember-qunit-nice-errors/issues",
+  "license": "MIT",
   "author": "WyeWorks",
   "contributors": [
     "Samanta de Barros <samanta.debarros.cejas@gmail.com> (https://github.com/sdebarros)",
@@ -36,11 +22,26 @@
     "Diego Acosta <acostami@gmail.com> (https://github.com/acostami)",
     "Santiago Ferreira <san650@gmail.com> (https://github.com/san650)"
   ],
-  "license": "MIT",
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wyeworks/ember-qunit-nice-errors.git"
+  },
+  "scripts": {
+    "build": "ember build",
+    "ember-test": "ember try:each",
+    "lint:js": "eslint ./*.js ./**/*.js",
+    "node-test": "mocha node-tests/*-test.js",
+    "start": "ember serve",
+    "test": "ember try:each && npm run node-test"
+  },
   "dependencies": {
     "babel-core": "^6.10.4",
     "broccoli-persistent-filter": "^1.4.3",
-    "ember-cli-babel": "^6.3.0",
+    "ember-cli-babel": "^6.6.0",
     "recast": "^0.13.0"
   },
   "devDependencies": {
@@ -48,23 +49,26 @@
     "broccoli-test-helpers": "0.0.9",
     "chai": "^3.5.0",
     "ember-ajax": "^3.0.0",
-    "ember-cli": "~2.14.2",
+    "ember-cli": "~2.18.0",
     "ember-cli-addon-tests": "^0.9.2",
-    "ember-cli-dependency-checker": "^1.3.0",
-    "ember-cli-eslint": "^3.0.0",
+    "ember-cli-dependency-checker": "^2.0.0",
+    "ember-cli-eslint": "^4.2.1",
     "ember-cli-htmlbars": "^2.0.1",
-    "ember-cli-htmlbars-inline-precompile": "^0.4.3",
+    "ember-cli-htmlbars-inline-precompile": "^1.0.0",
     "ember-cli-inject-live-reload": "^1.4.1",
-    "ember-cli-qunit": "^4.0.0",
-    "ember-cli-shims": "^1.1.0",
+    "ember-cli-qunit": "^4.1.1",
+    "ember-cli-shims": "^1.2.0",
     "ember-cli-sri": "^2.1.0",
-    "ember-cli-uglify": "^1.2.0",
+    "ember-cli-uglify": "^2.0.0",
+    "ember-cli-updater": "^1.0.0",
     "ember-disable-prototype-extensions": "^1.1.2",
     "ember-export-application-global": "^2.0.0",
     "ember-load-initializers": "^1.0.0",
     "ember-resolver": "^4.0.0",
-    "ember-source": "~2.14.1",
+    "ember-source": "~2.18.0",
     "ember-welcome-page": "^3.0.0",
+    "eslint-plugin-ember": "^5.0.0",
+    "eslint-plugin-node": "^5.2.1",
     "loader.js": "^4.2.3",
     "mocha": "^2.5.3",
     "mocha-eslint": "^4.1.0"
