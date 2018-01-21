@@ -15,11 +15,11 @@ cache:
   directories:
     - $HOME/.npm
 
-env:
 branches:
   only:
     - "master"
 
+env:
   global:
     # See https://git.io/vdao3 for details.
     - JOBS=1
