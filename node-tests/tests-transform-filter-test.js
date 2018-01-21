@@ -10,19 +10,17 @@ var path = require('path');
 var recast = require('recast');
 
 describe('transform test files on build', function() {
-  var build;
+  this.timeout(3000);
 
-  beforeEach(function() {
-    build = makeTestHelper({
-      fixturePath: __dirname,
-      subject: function(tree, options) {
-        return new Filter(tree, options || {});
-      }
-    });
-  }),
+  var build = makeTestHelper({
+    fixturePath: __dirname,
+    subject: function(tree, options) {
+      return new Filter(tree, options || {});
+    }
+  });
 
   afterEach(function() {
-    cleanupBuilders();
+    return cleanupBuilders();
   }),
 
   it('transforms assertions', function() {
