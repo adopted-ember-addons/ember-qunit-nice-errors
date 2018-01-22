@@ -36,7 +36,7 @@
     "lint:js": "eslint ./*.js ./**/*.js",
     "node-test": "mocha node-tests/*-test.js",
     "start": "ember serve",
-    "test": "ember try:each && npm run node-test"
+    "test": "ember try:each"
   },
   "dependencies": {
     "babel-core": "^6.10.4",
