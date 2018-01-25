@@ -34,7 +34,7 @@
     "build": "ember build",
     "ember-test": "ember try:each",
     "lint:js": "eslint ./*.js ./**/*.js",
-    "node-test": "mocha node-tests/*-test.js",
+    "node-test": "mocha --inline-diffs --colors node-tests/*-test.js",
     "start": "ember serve",
     "test": "ember try:each"
   },

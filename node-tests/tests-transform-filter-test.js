@@ -54,17 +54,24 @@ describe('transform test files on build', function() {
   });
 });
 
-function assertBuild(results, transformedFolder, exactMatch) {
-  var original, transformed;
+function assertBuild(results, expectedFolder, exactMatch) {
+  var actual, expected;
 
   files(results).forEach(function(file) {
-    original = fs.readFileSync(path.join(results.directory, file), 'utf8');
-    transformed = fs.readFileSync(path.join(__dirname, transformedFolder, file), 'utf8');
+    actual = fs.readFileSync(path.join(results.directory, file), 'utf8');
+    expected = fs.readFileSync(path.join(__dirname, expectedFolder, file), 'utf8');
 
-    if (exactMatch) {
-      assert.equal(original, transformed);
-    } else {
-      assert.equal(prettify(original), prettify(transformed));
+    try {
+      if (exactMatch) {
+        assert.equal(actual, expected, "Expected " + file + " to be transformed correctly");
+      } else {
+        assert.equal(prettify(actual), prettify(expected), "Expected " + file + " to be transformed correctly");
+      }
+    } catch(e) {
+      // HACK: For some reason assert.equal is not showing the string diff on
+      // error. This forces the mocha reporter to show the diff.
+      e.showDiff = true;
+      throw e;
     }
   });
 }
