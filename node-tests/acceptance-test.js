@@ -4,7 +4,7 @@ var denodeify = require('denodeify');
 var readFile = denodeify(require('fs').readFile);
 
 describe('Acceptance', function() {
-  this.timeout(300000);
+  this.timeout(500000);
   var app;
 
   before(function() {
