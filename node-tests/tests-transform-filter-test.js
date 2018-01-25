@@ -66,6 +66,15 @@ describe('transform test files on build', function() {
       assertBuild(results, 'fixtures/transformed/integration/custom-include');
     });
   });
+
+  it('excludes files that match the ignore conditions', function() {
+    const include = ['*-foo.js'];
+    const exclude = ['ok-*.js'];
+
+    return build('fixtures/original/integration/exclude', { include, exclude }).then(function(results) {
+      assertBuild(results, 'fixtures/transformed/integration/exclude');
+    });
+  });
 });
 
 function assertBuild(results, expectedFolder, exactMatch) {

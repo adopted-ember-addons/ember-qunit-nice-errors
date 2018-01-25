@@ -113,6 +113,19 @@ ENV['ember-qunit-nice-errors'] = {
 
 You can use any expression supported by `minimatch`, see https://www.npmjs.com/package/minimatch for more info.
 
+### exclude
+
+You can exclude specific test files from beign processed by adding exclude
+rules.
+
+```js
+ENV['ember-qunit-nice-errors'] = {
+  exclude: ["**/my-special-test.js"]
+};
+```
+
+You can use any expression supported by `minimatch`, see https://www.npmjs.com/package/minimatch for more info.
+
 ## Supported assertions
 
 We are currently supporting all the assertions provided by QUnit, those are:
