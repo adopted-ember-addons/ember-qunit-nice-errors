@@ -52,6 +52,20 @@ describe('transform test files on build', function() {
       assertBuild(results, 'fixtures/original/integration/unsupported-file', true);
     });
   });
+
+  it('converts files that matches the default glob *-test.js', function() {
+    return build('fixtures/original/integration/default-include').then(function(results) {
+      assertBuild(results, 'fixtures/transformed/integration/default-include');
+    });
+  });
+
+  it('tranforms files that match the include conditions', function() {
+    const include = ['*-foo.js', '*-bar.js'];
+
+    return build('fixtures/original/integration/custom-include', { include }).then(function(results) {
+      assertBuild(results, 'fixtures/transformed/integration/custom-include');
+    });
+  });
 });
 
 function assertBuild(results, expectedFolder, exactMatch) {
