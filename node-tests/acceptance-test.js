@@ -1,4 +1,3 @@
-/*eslint-env node, mocha*/
 var assert = require('chai').assert;
 var AddonTestApp = require('ember-cli-addon-tests').AddonTestApp;
 var denodeify = require('denodeify');

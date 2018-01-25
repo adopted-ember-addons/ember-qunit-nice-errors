@@ -1,4 +1,3 @@
-/* eslint-env node */
 module.exports = {
   test_page: 'tests/index.html?hidepassed',
   disable_watching: true,
@@ -9,10 +8,16 @@ module.exports = {
     'Chrome'
   ],
   browser_args: {
-    Chrome: [
-      "--headless",
-      "--disable-gpu",
-      "--remote-debugging-port=9222"
-    ]
+    Chrome: {
+      mode: 'ci',
+      args: [
+        '--disable-gpu',
+        '--headless',
+        '--remote-debugging-port=0',
+        '--window-size=1440,900',
+        // Workaround for https://github.com/travis-ci/travis-ci/issues/8836
+        '--no-sandbox',
+      ]
+    }
   }
 };
