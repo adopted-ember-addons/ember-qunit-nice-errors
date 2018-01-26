@@ -34,7 +34,7 @@
     "build": "ember build",
     "ember-test": "ember try:each",
     "lint:js": "eslint ./*.js ./**/*.js",
-    "node-test": "mocha node-tests/*-test.js",
+    "node-test": "mocha --inline-diffs --colors node-tests/*-test.js",
     "start": "ember serve",
     "test": "ember try:each"
   },
@@ -42,6 +42,7 @@
     "babel-core": "^6.10.4",
     "broccoli-persistent-filter": "^1.4.3",
     "ember-cli-babel": "^6.6.0",
+    "minimatch": "^3.0.4",
     "recast": "^0.13.0"
   },
   "devDependencies": {

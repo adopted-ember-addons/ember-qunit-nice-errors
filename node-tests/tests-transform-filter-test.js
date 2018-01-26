@@ -52,19 +52,49 @@ describe('transform test files on build', function() {
       assertBuild(results, 'fixtures/original/integration/unsupported-file', true);
     });
   });
+
+  it('converts files that matches the default glob *-test.js', function() {
+    return build('fixtures/original/integration/default-include').then(function(results) {
+      assertBuild(results, 'fixtures/transformed/integration/default-include');
+    });
+  });
+
+  it('tranforms files that match the include conditions', function() {
+    const include = ['*-foo.js', '*-bar.js'];
+
+    return build('fixtures/original/integration/custom-include', { include }).then(function(results) {
+      assertBuild(results, 'fixtures/transformed/integration/custom-include');
+    });
+  });
+
+  it('excludes files that match the ignore conditions', function() {
+    const include = ['*-foo.js'];
+    const exclude = ['ok-*.js'];
+
+    return build('fixtures/original/integration/exclude', { include, exclude }).then(function(results) {
+      assertBuild(results, 'fixtures/transformed/integration/exclude');
+    });
+  });
 });
 
-function assertBuild(results, transformedFolder, exactMatch) {
-  var original, transformed;
+function assertBuild(results, expectedFolder, exactMatch) {
+  var actual, expected;
 
   files(results).forEach(function(file) {
-    original = fs.readFileSync(path.join(results.directory, file), 'utf8');
-    transformed = fs.readFileSync(path.join(__dirname, transformedFolder, file), 'utf8');
+    actual = fs.readFileSync(path.join(results.directory, file), 'utf8');
+    expected = fs.readFileSync(path.join(__dirname, expectedFolder, file), 'utf8');
 
-    if (exactMatch) {
-      assert.equal(original, transformed);
-    } else {
-      assert.equal(prettify(original), prettify(transformed));
+    try {
+      if (exactMatch) {
+        assert.equal(actual, expected, "Expected " + file + " to be transformed correctly");
+      } else {
+        assert.equal(prettify(actual), prettify(expected), "Expected " + file + " to be transformed correctly");
+      }
+    } catch(e) {
+      // HACK: For some reason assert.equal is not showing the string diff on
+      // error. This forces the mocha reporter to show the diff.
+      e.showDiff = true;
+      throw e;
     }
   });
 }

@@ -74,7 +74,7 @@ ENV['ember-qunit-nice-errors'] = {
 
 Don't worry, the override will still show your orginal messages, it is not a destructive operation!
 
-The following example ilustrates what is the result of using the option `completeExistingMessages`.
+The following example illustrates what is the result of using the option `completeExistingMessages`.
 
 ##### Before
 ```js
@@ -85,6 +85,46 @@ assert.ok(1 === 1, 'one should be one');
 ```js
 assert.ok(1 === 1, "assert.ok(1 === 1, 'one should be one')");
 ```
+
+### include
+
+By default only test files that match the glob `**/*-test.js` are processed by the
+addon. You can include/exclude files from being processed by setting custom glob
+rules.
+
+```js
+ENV['ember-qunit-nice-errors'] = {
+  include: ["**/*-foo.js"]
+};
+```
+
+Note that by changing the `include` configuration you are overriding the default
+glob `**/*-test.js`. If you want to include files and keep the default rules,
+you can write it as follows.
+
+```js
+ENV['ember-qunit-nice-errors'] = {
+  include: [
+    "**/*-test.js",
+    "**/*-foo.js",
+  ]
+};
+```
+
+You can use any expression supported by `minimatch`, see https://www.npmjs.com/package/minimatch for more info.
+
+### exclude
+
+You can exclude specific test files from beign processed by adding exclude
+rules.
+
+```js
+ENV['ember-qunit-nice-errors'] = {
+  exclude: ["**/my-special-test.js"]
+};
+```
+
+You can use any expression supported by `minimatch`, see https://www.npmjs.com/package/minimatch for more info.
 
 ## Supported assertions
 
