@@ -1,28 +1,9 @@
 'use strict';
 
-var transform = require('../lib/transform-qunit-assertions');
-var assert = require('chai').assert;
-var fs = require('fs');
-var recast = require('recast');
-
-function prettify(source) {
-  var ast = recast.parse(source);
-  return recast.prettyPrint(ast).code;
-}
-
-function assertOutput(fileName, addFile) {
-  fileName = fileName + '.js';
-  var source = fs.readFileSync('./node-tests/fixtures/original/unit/' + fileName, 'utf8');
-  var transformed = fs.readFileSync('./node-tests/fixtures/transformed/unit/' + fileName, 'utf8');
-  var options = addFile ? { file: fileName } : null;
-
-  var transformedSource = transform(source, options);
-
-  var prettyTransformedSource = prettify(transformedSource);
-  var prettyTransformedExpected = prettify(transformed);
-
-  assert.equal(prettyTransformedExpected, prettyTransformedSource);
-}
+const assert = require('chai').assert;
+const fs = require('fs');
+const recast = require('recast');
+const transform = require('../../lib/transform-qunit-assertions');
 
 describe('transform qunit assertions', function() {
   it('transforms ok assertions', function() {
@@ -69,3 +50,23 @@ describe('transform qunit assertions', function() {
     assertOutput('not-strict-equal');
   });
 });
+
+function prettify(source) {
+  let ast = recast.parse(source);
+
+  return recast.prettyPrint(ast).code;
+}
+
+function assertOutput(fileName, addFile) {
+  let source = fs.readFileSync(`./node-tests/fixtures/original/unit/${fileName}.js`, 'utf8');
+  let expected = fs.readFileSync(`./node-tests/fixtures/transformed/unit/${fileName}.js`, 'utf8');
+  let options = addFile ? { file: `${fileName}.js` } : null;
+
+  let transformedSource = transform(source, options);
+
+  let prettyTransformedSource = prettify(transformedSource);
+  let prettyTransformedExpected = prettify(expected);
+
+  assert.equal(prettyTransformedExpected, prettyTransformedSource);
+}
+

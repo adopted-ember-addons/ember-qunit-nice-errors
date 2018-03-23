@@ -1,18 +1,18 @@
 'use strict';
 
-var Filter = require('../lib/tests-transform-filter');
-var assert = require('chai').assert;
-var broccoliTestHelpers = require('broccoli-test-helpers');
-var makeTestHelper = broccoliTestHelpers.makeTestHelper;
-var cleanupBuilders = broccoliTestHelpers.cleanupBuilders;
-var fs = require('fs');
-var path = require('path');
-var recast = require('recast');
+const Filter = require('../../lib/tests-transform-filter');
+const assert = require('chai').assert;
+const broccoliTestHelpers = require('broccoli-test-helpers');
+const makeTestHelper = broccoliTestHelpers.makeTestHelper;
+const cleanupBuilders = broccoliTestHelpers.cleanupBuilders;
+const fs = require('fs');
+const path = require('path');
+const recast = require('recast');
 
 describe('transform test files on build', function() {
   this.timeout(3000);
 
-  var build = makeTestHelper({
+  let build = makeTestHelper({
     fixturePath: __dirname,
     subject: function(tree, options) {
       return new Filter(tree, options || {});
@@ -24,46 +24,46 @@ describe('transform test files on build', function() {
   }),
 
   it('transforms assertions', function() {
-    return build('fixtures/original/integration/basic').then(function(results) {
-      assertBuild(results, 'fixtures/transformed/integration/basic');
+    return build(originalFixture('basic')).then((results) => {
+      assertBuild(results, transformedFixture('basic'));
     });
   });
 
   it('transforms assertions with file info option', function() {
-    return build('fixtures/original/integration/with-file', { showFileInfo: true }).then(function(results) {
-      assertBuild(results, 'fixtures/transformed/integration/with-file');
+    return build(originalFixture('with-file'), { showFileInfo: true }).then((results) => {
+      assertBuild(results, transformedFixture('with-file'));
     });
   });
 
   it('transforms assertions with complete existing messages option', function() {
-    return build('fixtures/original/integration/completion-mode', { completeExistingMessages: true }).then(function(results) {
-      assertBuild(results, 'fixtures/transformed/integration/completion-mode');
+    return build(originalFixture('completion-mode'), { completeExistingMessages: true }).then((results) => {
+      assertBuild(results, transformedFixture('completion-mode'));
     });
   });
 
   it('transforms assertions with complete existing messages and adds file and line number', function() {
-    return build('fixtures/original/integration/completion-with-file', { showFileInfo: true, completeExistingMessages: true }).then(function(results) {
-      assertBuild(results, 'fixtures/transformed/integration/completion-with-file');
+    return build(originalFixture('completion-with-file'), { showFileInfo: true, completeExistingMessages: true }).then((results) => {
+      assertBuild(results, transformedFixture('completion-with-file'));
     });
   });
 
   it('ignores files with unsopported features or parse errors', function() {
-    return build('fixtures/original/integration/unsupported-file').then(function(results) {
-      assertBuild(results, 'fixtures/original/integration/unsupported-file', true);
+    return build(originalFixture('unsupported-file')).then((results) => {
+      assertBuild(results, originalFixture('unsupported-file'), true);
     });
   });
 
   it('converts files that matches the default glob *-test.js', function() {
-    return build('fixtures/original/integration/default-include').then(function(results) {
-      assertBuild(results, 'fixtures/transformed/integration/default-include');
+    return build(originalFixture('default-include')).then((results) => {
+      assertBuild(results, transformedFixture('default-include'));
     });
   });
 
   it('tranforms files that match the include conditions', function() {
     const include = ['*-foo.js', '*-bar.js'];
 
-    return build('fixtures/original/integration/custom-include', { include }).then(function(results) {
-      assertBuild(results, 'fixtures/transformed/integration/custom-include');
+    return build(originalFixture('custom-include'), { include }).then((results) => {
+      assertBuild(results, transformedFixture('custom-include'));
     });
   });
 
@@ -71,14 +71,14 @@ describe('transform test files on build', function() {
     const include = ['*-foo.js'];
     const exclude = ['ok-*.js'];
 
-    return build('fixtures/original/integration/exclude', { include, exclude }).then(function(results) {
-      assertBuild(results, 'fixtures/transformed/integration/exclude');
+    return build(originalFixture('exclude'), { include, exclude }).then((results) => {
+      assertBuild(results, transformedFixture('exclude'));
     });
   });
 });
 
 function assertBuild(results, expectedFolder, exactMatch) {
-  var actual, expected;
+  let actual, expected;
 
   files(results).forEach(function(file) {
     actual = fs.readFileSync(path.join(results.directory, file), 'utf8');
@@ -86,7 +86,7 @@ function assertBuild(results, expectedFolder, exactMatch) {
 
     try {
       if (exactMatch) {
-        assert.equal(actual, expected, "Expected " + file + " to be transformed correctly");
+        assert.equal(actual, expected, `Expected ${file} to be transformed correctly`);
       } else {
         assert.equal(prettify(actual), prettify(expected), "Expected " + file + " to be transformed correctly");
       }
@@ -100,10 +100,18 @@ function assertBuild(results, expectedFolder, exactMatch) {
 }
 
 function files(results) {
-  return results.files.filter(function(str) { return !/\/$/.test(str); });
+  return results.files.filter((str) => { return !/\/$/.test(str); });
 }
 
 function prettify(source) {
-  var ast = recast.parse(source);
+  let ast = recast.parse(source);
   return recast.prettyPrint(ast).code;
+}
+
+function originalFixture(name) {
+  return `../fixtures/original/integration/${name}`
+}
+
+function transformedFixture(name) {
+  return `../fixtures/transformed/integration/${name}`
 }
