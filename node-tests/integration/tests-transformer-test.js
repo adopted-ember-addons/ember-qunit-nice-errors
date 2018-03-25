@@ -1,6 +1,6 @@
 'use strict';
 
-const Filter = require('../../lib/tests-transform-filter');
+const Filter = require('../../lib/tests-transformer');
 const assert = require('chai').assert;
 const broccoliTestHelpers = require('broccoli-test-helpers');
 const makeTestHelper = broccoliTestHelpers.makeTestHelper;

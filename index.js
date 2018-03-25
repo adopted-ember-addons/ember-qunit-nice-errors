@@ -1,6 +1,6 @@
 'use strict';
 
-var TestTransformFilter = require('./lib/tests-transform-filter');
+var TestTransformer = require('./lib/tests-transformer');
 
 module.exports = {
   name: 'ember-qunit-nice-errors',
@@ -14,7 +14,7 @@ module.exports = {
 
   preprocessTree: function(type, tree) {
     if (type === 'test') {
-      return new TestTransformFilter(tree, this.addonConfig);
+      return new TestTransformer(tree, this.addonConfig);
     }
     return tree;
   }
