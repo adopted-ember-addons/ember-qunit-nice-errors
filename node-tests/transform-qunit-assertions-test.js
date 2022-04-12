@@ -12,8 +12,14 @@ function prettify(source) {
 
 function assertOutput(fileName, addFile) {
   fileName = fileName + '.js';
-  var source = fs.readFileSync('./node-tests/fixtures/original/unit/' + fileName, 'utf8');
-  var transformed = fs.readFileSync('./node-tests/fixtures/transformed/unit/' + fileName, 'utf8');
+  var source = fs.readFileSync(
+    './node-tests/fixtures/original/unit/' + fileName,
+    'utf8'
+  );
+  var transformed = fs.readFileSync(
+    './node-tests/fixtures/transformed/unit/' + fileName,
+    'utf8'
+  );
   var options = addFile ? { file: fileName } : null;
 
   var transformedSource = transform(source, options);
@@ -24,48 +30,48 @@ function assertOutput(fileName, addFile) {
   assert.equal(prettyTransformedExpected, prettyTransformedSource);
 }
 
-describe('transform qunit assertions', function() {
-  it('transforms ok assertions', function() {
+describe('transform qunit assertions', function () {
+  it('transforms ok assertions', function () {
     assertOutput('ok');
   });
 
-  it('transforms notOk assertions', function() {
+  it('transforms notOk assertions', function () {
     assertOutput('not-ok');
   });
 
-  it('transforms equal assertions', function() {
+  it('transforms equal assertions', function () {
     assertOutput('equal');
   });
 
-  it('transforms not-equal assertions', function() {
+  it('transforms not-equal assertions', function () {
     assertOutput('not-equal');
   });
 
-  it('adds file path and line number of assertion based on options', function() {
+  it('adds file path and line number of assertion based on options', function () {
     assertOutput('with-file-line', true);
   });
 
-  it('transforms deep-equal assertions', function() {
+  it('transforms deep-equal assertions', function () {
     assertOutput('deep-equal');
   });
 
-  it('transforms not-deep-equal assertions', function() {
+  it('transforms not-deep-equal assertions', function () {
     assertOutput('not-deep-equal');
   });
 
-  it('transforms prop-equal assertions', function() {
+  it('transforms prop-equal assertions', function () {
     assertOutput('prop-equal');
   });
 
-  it('transforms not-prop-equal assertions', function() {
+  it('transforms not-prop-equal assertions', function () {
     assertOutput('not-prop-equal');
   });
 
-  it('transforms strict-equal assertions', function() {
+  it('transforms strict-equal assertions', function () {
     assertOutput('strict-equal');
   });
 
-  it('transforms not-strict-equal assertions', function() {
+  it('transforms not-strict-equal assertions', function () {
     assertOutput('not-strict-equal');
   });
 });
