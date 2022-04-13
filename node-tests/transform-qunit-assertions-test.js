@@ -1,22 +1,22 @@
 'use strict';
 
-var transform = require('../lib/transform-qunit-assertions');
-var assert = require('chai').assert;
-var fs = require('fs');
-var recast = require('recast');
+import transform from '../lib/transform-qunit-assertions';
+import { assert } from 'chai';
+import { readFileSync } from 'fs';
+import { parse, prettyPrint } from 'recast';
 
 function prettify(source) {
-  var ast = recast.parse(source);
-  return recast.prettyPrint(ast).code;
+  var ast = parse(source);
+  return prettyPrint(ast).code;
 }
 
 function assertOutput(fileName, addFile) {
   fileName = fileName + '.js';
-  var source = fs.readFileSync(
+  var source = readFileSync(
     './node-tests/fixtures/original/unit/' + fileName,
     'utf8'
   );
-  var transformed = fs.readFileSync(
+  var transformed = readFileSync(
     './node-tests/fixtures/transformed/unit/' + fileName,
     'utf8'
   );

@@ -9,15 +9,13 @@ module('Unit | Helper | test helper');
 
 //Replace this with your real tests.
 test('it works', async function (assert) {
-  let result = testHelper([42]),
-    obj = { a: true, b: false };
+  let obj = { a: true, b: false };
 
   assert.ok(await Promise.resolve(2), 'assert.ok(await Promise.resolve(2))');
   assert.ok(() => {
     return true;
   }, 'assert.ok(() => { return true })');
   assert.ok(class Person {}, 'assert.ok(class Person {})');
-  assert.ok(...arr, 'assert.ok(...arr)');
   assert.ok(
     (function () {
       return true;
@@ -44,5 +42,6 @@ test('it works', async function (assert) {
 });
 
 test('it works - variable', function (a) {
+  let result = testHelper([42]);
   a.ok(result, 'a.ok(result)');
 });

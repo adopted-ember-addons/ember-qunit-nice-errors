@@ -47,5 +47,6 @@ test('it works', function (assert) {
 });
 
 test('it works - variable', function (a) {
+  let result = testHelper([42]);
   a.notStrictEqual(result, result, 'a.notStrictEqual(result, result)');
 });

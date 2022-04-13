@@ -1,4 +1,3 @@
-import { testHelper } from 'shell/helpers/test-helper';
 import { module, test } from 'qunit';
 
 module('Unit | Helper | test helper');

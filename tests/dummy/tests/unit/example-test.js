@@ -1,11 +1,11 @@
 import { module, test } from 'qunit';
 
-module('Unit | example', function() {
+module('Unit | example', () => {
   test('passes all assertions', function (assert) {
     var fooTruthy = true;
 
     assert.ok(fooTruthy);
     assert.ok(fooTruthy);
-    assert.equal(5 * 2, 2 * 5);
+    assert.deepEqual(5 * 2, 2 * 5);
   });
 });

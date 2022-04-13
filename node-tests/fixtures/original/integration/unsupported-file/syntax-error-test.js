@@ -2,7 +2,7 @@ import { module, test } from 'qunit';
 
 module('Unit | Helper | test');
 
-test('it works', function(assert) {
+test('it works', (assert) => {
   assert.ok(false);
-  assert.equal({}, {);
+  assert.equal({}, {});
 });

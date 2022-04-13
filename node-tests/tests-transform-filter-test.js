@@ -1,13 +1,21 @@
 'use strict';
 
-var Filter = require('../lib/tests-transform-filter');
-var assert = require('chai').assert;
-var broccoliTestHelpers = require('broccoli-test-helpers');
-var makeTestHelper = broccoliTestHelpers.makeTestHelper;
-var cleanupBuilders = broccoliTestHelpers.cleanupBuilders;
-var fs = require('fs');
-var path = require('path');
-var recast = require('recast');
+import Filter from '../lib/tests-transform-filter';
+import { assert } from 'chai';
+import {
+  makeTestHelper as _makeTestHelper,
+  cleanupBuilders as _cleanupBuilders,
+} from 'broccoli-test-helpers';
+var makeTestHelper = _makeTestHelper;
+var cleanupBuilders = _cleanupBuilders;
+import { readFileSync } from 'fs';
+import { join } from 'path';
+import { parse, prettyPrint } from 'recast';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 describe('transform test files on build', function () {
   this.timeout(3000);
@@ -108,11 +116,8 @@ function assertBuild(results, expectedFolder, exactMatch) {
   var actual, expected;
 
   files(results).forEach(function (file) {
-    actual = fs.readFileSync(path.join(results.directory, file), 'utf8');
-    expected = fs.readFileSync(
-      path.join(__dirname, expectedFolder, file),
-      'utf8'
-    );
+    actual = readFileSync(join(results.directory, file), 'utf8');
+    expected = readFileSync(join(__dirname, expectedFolder, file), 'utf8');
 
     try {
       if (exactMatch) {
@@ -144,6 +149,6 @@ function files(results) {
 }
 
 function prettify(source) {
-  var ast = recast.parse(source);
-  return recast.prettyPrint(ast).code;
+  var ast = parse(source);
+  return prettyPrint(ast).code;
 }

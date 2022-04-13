@@ -1,6 +1,6 @@
-var assert = require('chai').assert;
-var AddonTestApp = require('ember-cli-addon-tests').AddonTestApp;
-var denodeify = require('denodeify');
+import { assert } from 'chai';
+import { AddonTestApp } from 'ember-cli-addon-tests';
+import denodeify from 'denodeify';
 var readFile = denodeify(require('fs').readFile);
 
 describe('Acceptance', function () {
