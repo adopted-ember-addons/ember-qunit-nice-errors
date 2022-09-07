@@ -9,7 +9,9 @@ message on those asserts that don't have one set by you.
 
 ## Installation
 
-As easy as `ember install ember-qunit-nice-errors`
+* Ember.js v3.24 or above
+* Ember CLI v3.24 or above
+* Node.js v12 or above
 
 ## Example
 

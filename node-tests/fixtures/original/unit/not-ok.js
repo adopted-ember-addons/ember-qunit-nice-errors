@@ -7,23 +7,35 @@ function testFunction(a) {
 
 module('Unit | Helper | test helper');
 
-test('it works', function(assert) {
+test('it works', function (assert) {
   let result = testHelper([42]),
-      obj = { a: true, b: false };
+    obj = { a: true, b: false };
 
   assert.notOk(result);
-  assert.notOk((function() { return true; })());
-  assert.notOk(1===1, 'testing equality');
+  assert.notOk(
+    (function () {
+      return true;
+    })()
+  );
+  assert.notOk(1 === 1, 'testing equality');
   assert.notOk(true);
-  assert.notOk((1+2+3)-3*5*6);
-  assert.notOk(function() { return true; }(), 'testing a function');
+  assert.notOk(1 + 2 + 3 - 3 * 5 * 6);
+  assert.notOk(
+    (function () {
+      return true;
+    })(),
+    'testing a function'
+  );
   assert.notOk(obj.a);
   assert.notOk(testFunction(true));
-  assert.notOk((function() {
-    return true;
-  })());
+  assert.notOk(
+    (function () {
+      return true;
+    })()
+  );
 });
 
-test('it works - variable', function(a) {
-   a.notOk(result);
+test('it works - variable', function (a) {
+  let result = testHelper([42]);
+  a.notOk(result);
 });
