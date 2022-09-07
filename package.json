@@ -12,8 +12,8 @@
     "qunit",
     "test"
   ],
-  "homepage": "https://github.com/wyeworks/ember-qunit-nice-errors#readme",
-  "bugs": "https://github.com/wyeworks/ember-qunit-nice-errors/issues",
+  "homepage": "https://github.com/adopted-ember-addons/ember-qunit-nice-errors#readme",
+  "bugs": "https://github.com/adopted-ember-addons/ember-qunit-nice-errors/issues",
   "license": "MIT",
   "author": "WyeWorks",
   "contributors": [
@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wyeworks/ember-qunit-nice-errors.git"
+    "url": "https://github.com/adopted-ember-addons/ember-qunit-nice-errors.git"
   },
   "scripts": {
     "build": "ember build",
