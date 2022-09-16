@@ -14,6 +14,10 @@
   ],
   "homepage": "https://github.com/adopted-ember-addons/ember-qunit-nice-errors#readme",
   "bugs": "https://github.com/adopted-ember-addons/ember-qunit-nice-errors/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adopted-ember-addons/ember-qunit-nice-errors.git"
+  },
   "license": "MIT",
   "author": "WyeWorks",
   "contributors": [
@@ -25,10 +29,6 @@
   "directories": {
     "doc": "doc",
     "test": "tests"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/adopted-ember-addons/ember-qunit-nice-errors.git"
   },
   "scripts": {
     "build": "ember build",
@@ -74,17 +74,37 @@
     "eslint-plugin-ember": "^5.4.0",
     "eslint-plugin-node": "^7.0.1",
     "loader.js": "^4.7.0",
-    "qunit-dom": "^0.8.0",
     "mocha": "^6.1.4",
-    "mocha-eslint": "~5.0.0"
+    "mocha-eslint": "~5.0.0",
+    "qunit-dom": "^0.8.0",
+    "release-it": "^14.2.1",
+    "release-it-lerna-changelog": "^3.1.0"
   },
   "engines": {
     "node": "6.* || 8.* || >= 10.*"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
     "versionCompatibility": {
       "ember": ">=2.4"
+    }
+  },
+  "release-it": {
+    "plugins": {
+      "release-it-lerna-changelog": {
+        "infile": "CHANGELOG.md",
+        "launchEditor": true
+      }
+    },
+    "git": {
+      "tagName": "v${version}"
+    },
+    "github": {
+      "release": true,
+      "tokenRef": "GITHUB_AUTH"
     }
   }
 }
