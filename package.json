@@ -1,6 +1,6 @@
 {
   "name": "ember-qunit-nice-errors",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Because expected true, result false is not enough!",
   "keywords": [
     "assertion",
