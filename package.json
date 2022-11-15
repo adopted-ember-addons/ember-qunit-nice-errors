@@ -43,7 +43,7 @@
     "babel-core": "^6.26.3",
     "broccoli-persistent-filter": "^1.4.6",
     "ember-cli-babel": "^7.1.2",
-    "minimatch": "^3.0.4",
+    "minimatch": "^3.1.2",
     "recast": "^0.13.2"
   },
   "devDependencies": {
@@ -106,5 +106,8 @@
       "release": true,
       "tokenRef": "GITHUB_AUTH"
     }
+  },
+  "volta": {
+    "node": "10.24.1"
   }
 }
