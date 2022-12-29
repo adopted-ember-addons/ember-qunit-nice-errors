@@ -4,3 +4,5 @@ engines:
     channel: "eslint-4"
     config:
       config: .eslintrc.js
+exclude_patterns:
+- "node-tests/fixtures/**/*.js"
