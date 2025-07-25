@@ -10557,7 +10557,7 @@ snapshots:
       async-promise-queue: 1.0.5
       colors: 1.4.0
       commander: 8.3.0
-      globby: 11.0.4
+      globby: 11.1.0
       ora: 5.4.1
       slash: 3.0.0
       tmp: 0.2.3
@@ -13458,7 +13458,7 @@ snapshots:
   proxy-agent@5.0.0:
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.4
+      debug: 4.4.1(supports-color@8.1.1)
       http-proxy-agent: 4.0.1
       https-proxy-agent: 5.0.1
       lru-cache: 5.1.1
@@ -14922,7 +14922,7 @@ snapshots:
       is-yarn-global: 0.3.0
       latest-version: 5.1.0
       pupa: 2.1.1
-      semver: 7.3.5
+      semver: 7.7.2
       semver-diff: 3.1.1
       xdg-basedir: 4.0.0
 
