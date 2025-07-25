@@ -54,6 +54,8 @@ jobs:
         run: pnpm install --no-lockfile
       - name: Run Tests
         run: pnpm test:ember
+      - name: Run Node Tests
+        run: pnpm node-test    
 
   try-scenarios:
     name: ${{ matrix.try-scenario }}
