@@ -1,6 +1,5 @@
 # ember-qunit-nice-errors
-[![Build Status](https://travis-ci.org/wyeworks/ember-qunit-nice-errors.svg?branch=master)](https://travis-ci.org/wyeworks/ember-qunit-nice-errors)
-<a href="https://codeclimate.com/github/wyeworks/ember-qunit-nice-errors/maintainability"><img src="https://api.codeclimate.com/v1/badges/6e06176457a3027d53f3/maintainability" /></a>
+[![CI](https://github.com/adopted-ember-addons/ember-qunit-nice-errors/actions/workflows/ci.yml/badge.svg)](https://github.com/adopted-ember-addons/ember-qunit-nice-errors/actions/workflows/ci.yml)
 
 Because expected true, result false is not enough!
 
