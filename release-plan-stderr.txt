@@ -1,0 +1,8 @@
+# Unlabeled Changes
+
+* `ember-qunit-nice-errors`
+  * [#67](https://github.com/adopted-ember-addons/ember-qunit-nice-errors/pull/67) Dependencies update to alleviate security warnings ([@jmbejar](https://github.com/jmbejar))
+  * [#61](https://github.com/adopted-ember-addons/ember-qunit-nice-errors/pull/61) Allow to configure include and exclude rules ([@san650](https://github.com/san650))
+
+
+*Cannot plan release until the above changes are labeled*.
