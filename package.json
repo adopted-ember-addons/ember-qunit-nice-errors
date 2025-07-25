@@ -24,7 +24,8 @@
     "Samanta de Barros <samanta.debarros.cejas@gmail.com> (https://github.com/sdebarros)",
     "Federico Kauffman <fede.kau@gmail.com> (https://github.com/fedekau)",
     "Diego Acosta <acostami@gmail.com> (https://github.com/acostami)",
-    "Santiago Ferreira <san650@gmail.com> (https://github.com/san650)"
+    "Santiago Ferreira <san650@gmail.com> (https://github.com/san650)",
+    "Robbie Wagner <rwwagner90@gmail.com> (https://github.com/RobbieTheWagner)"
   ],
   "directories": {
     "doc": "doc",
@@ -48,7 +49,6 @@
   },
   "dependencies": {
     "@babel/core": "^7.25.2",
-    "babel-core": "^6.26.3",
     "broccoli-persistent-filter": "^1.4.6",
     "ember-cli-babel": "^8.2.0",
     "ember-cli-htmlbars": "^6.3.0",
@@ -65,7 +65,7 @@
     "@glimmer/tracking": "^1.1.2",
     "broccoli-asset-rev": "^3.0.0",
     "broccoli-test-helpers": "0.0.9",
-    "chai": "^3.5.0",
+    "chai": "^5.2.1",
     "concurrently": "^8.2.2",
     "ember-auto-import": "^2.8.1",
     "ember-cli": "~5.12.0",
@@ -89,8 +89,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-qunit": "^8.1.2",
     "loader.js": "^4.7.0",
-    "mocha": "^6.1.4",
-    "mocha-eslint": "~5.0.0",
+    "mocha": "^11.7.1",
     "prettier": "^3.3.3",
     "qunit": "^2.22.0",
     "qunit-dom": "^3.2.1",
@@ -114,10 +113,7 @@
     "edition": "octane"
   },
   "ember-addon": {
-    "configPath": "tests/dummy/config",
-    "versionCompatibility": {
-      "ember": ">=4.12"
-    }
+    "configPath": "tests/dummy/config"
   },
   "release-it": {
     "plugins": {
@@ -133,8 +129,5 @@
       "release": true,
       "tokenRef": "GITHUB_AUTH"
     }
-  },
-  "volta": {
-    "node": "10.24.1"
   }
 }
