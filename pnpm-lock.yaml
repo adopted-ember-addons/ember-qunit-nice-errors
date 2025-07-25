@@ -69,9 +69,6 @@ importers:
       ember-cli:
         specifier: ~5.12.0
         version: 5.12.0(babel-core@6.26.3)(handlebars@4.7.8)(underscore@1.13.7)
-      ember-cli-addon-tests:
-        specifier: ^0.11.1
-        version: 0.11.1
       ember-cli-clean-css:
         specifier: ^3.0.0
         version: 3.0.0
@@ -2789,9 +2786,6 @@ packages:
   delegates@1.0.0:
     resolution: {integrity: sha512-bd2L678uiWATM6m5Z1VzNCErI3jiGzt6HGY8OVICs40JQq/HALfbyNJmp0UDakEY4pMMaN0Ly5om/B1VI/+xfQ==}
 
-  denodeify@1.2.1:
-    resolution: {integrity: sha512-KNTihKNmQENUZeKu5fzfpzRqR5S2VMp4gl9RFHiWzj9DfvYQPMJ6XHKNaQxaGCXwPk6y9yme3aUoaiAe+KX+vg==}
-
   depd@1.1.2:
     resolution: {integrity: sha512-7emPTl6Dpo6JRXOXjLRxck+FlLRX5847cLKEn00PLAgc3g2hTZZgr+e4c2v6QpSmLeFP3n5yUo7ft6avBK/5jQ==}
     engines: {node: '>= 0.6'}
@@ -2876,10 +2870,6 @@ packages:
   ember-auto-import@2.10.0:
     resolution: {integrity: sha512-bcBFDYVTFHyqyq8BNvsj6UO3pE6Uqou/cNmee0WaqBgZ+1nQqFz0UE26usrtnFAT+YaFZSkqF2H36QW84k0/cg==}
     engines: {node: 12.* || 14.* || >= 16}
-
-  ember-cli-addon-tests@0.11.1:
-    resolution: {integrity: sha512-PI3ht9NrgfAwBgh3aPCVecajndvDKltTqRdtxt5bgfQJ3+AMs6moXhijKygwuAeT5btyhhLbceTfHRL/K8pX2w==}
-    engines: {node: '>= 6'}
 
   ember-cli-babel-plugin-helpers@1.1.1:
     resolution: {integrity: sha512-sKvOiPNHr5F/60NLd7SFzMpYPte/nnGkq/tMIfXejfKHIhaiIkYFqX8Z9UFTKWLLn+V7NOaby6niNPZUdvKCRw==}
@@ -3545,10 +3535,6 @@ packages:
   findup-sync@0.2.1:
     resolution: {integrity: sha512-uv8a0ezsjAT99zkSJsJtx1scyee6jS2iC4T50n6McAudpZD5rHsGsdvgO+kd73hSh3v/ZiW/8dDfLb2p9yxptw==}
     engines: {node: '>= 0.6.0'}
-
-  findup-sync@2.0.0:
-    resolution: {integrity: sha512-vs+3unmJT45eczmcAZ6zMJtxN3l/QXeccaXQx5cu/MeJMhewVfoWZqibRkOxPnmoR59+Zy5hjabfQc6JLSah4g==}
-    engines: {node: '>= 0.10'}
 
   findup-sync@4.0.0:
     resolution: {integrity: sha512-6jvvn/12IC4quLBL1KNokxC7wWTvYncaVUYSoxWw7YykPLuRrnv4qdHcSOywOI5RpkOVGeQRtWM8/q+G6W6qfQ==}
@@ -4315,10 +4301,6 @@ packages:
   is-git-url@1.0.0:
     resolution: {integrity: sha512-UCFta9F9rWFSavp9H3zHEHrARUfZbdJvmHKeEpds4BK3v7W2LdXoNypMtXXi5w5YBDEBCTYmbI+vsSwI8LYJaQ==}
     engines: {node: '>=0.8'}
-
-  is-glob@3.1.0:
-    resolution: {integrity: sha512-UFpDDrPgM6qpnFNI+rh/p3bUaq9hKLZN8bMUWzxmcnZVS3omf4IPK+BrewlnWjO1WmUsMYuSjKh4UJuV4+Lqmw==}
-    engines: {node: '>=0.10.0'}
 
   is-glob@4.0.3:
     resolution: {integrity: sha512-xelSayHH36ZgE7ZWhli7pW34hNbNl8Ojv5KVmkJD4hBdD3th8Tfk9vYasLM+mXWOZhFkgZfxhLSnrwRr4elSSg==}
@@ -6559,10 +6541,6 @@ packages:
   tar@6.2.1:
     resolution: {integrity: sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==}
     engines: {node: '>=10'}
-
-  temp@0.8.4:
-    resolution: {integrity: sha512-s0ZZzd0BzYv5tLSptZooSjK8oj6C+c19p7Vqta9+6NPOf7r+fxq0cJe6/oN4LTC79sy5NY8ucOJNgwsKCSbfqg==}
-    engines: {node: '>=6.0.0'}
 
   temp@0.9.4:
     resolution: {integrity: sha512-yYrrsWnrXMcdsnu/7YMYAofM1ktpL5By7vZhf15CrXijWWrEYZks5AXBudalfSWJLlnen/QUJUB5aoB0kqZUGA==}
@@ -10636,8 +10614,6 @@ snapshots:
 
   delegates@1.0.0: {}
 
-  denodeify@1.2.1: {}
-
   depd@1.1.2: {}
 
   depd@2.0.0: {}
@@ -10742,20 +10718,6 @@ snapshots:
       - '@glint/template'
       - supports-color
       - webpack
-
-  ember-cli-addon-tests@0.11.1:
-    dependencies:
-      chalk: 2.4.2
-      debug: 3.2.7
-      denodeify: 1.2.1
-      findup-sync: 2.0.0
-      fs-extra: 5.0.0
-      lodash: 4.17.21
-      semver: 5.7.2
-      symlink-or-copy: 1.3.1
-      temp: 0.8.4
-    transitivePeerDependencies:
-      - supports-color
 
   ember-cli-babel-plugin-helpers@1.1.1: {}
 
@@ -12059,15 +12021,6 @@ snapshots:
     dependencies:
       glob: 4.3.5
 
-  findup-sync@2.0.0:
-    dependencies:
-      detect-file: 1.0.0
-      is-glob: 3.1.0
-      micromatch: 3.1.10
-      resolve-dir: 1.0.1
-    transitivePeerDependencies:
-      - supports-color
-
   findup-sync@4.0.0:
     dependencies:
       detect-file: 1.0.0
@@ -13011,10 +12964,6 @@ snapshots:
       safe-regex-test: 1.1.0
 
   is-git-url@1.0.0: {}
-
-  is-glob@3.1.0:
-    dependencies:
-      is-extglob: 2.1.1
 
   is-glob@4.0.3:
     dependencies:
@@ -15494,10 +15443,6 @@ snapshots:
       minizlib: 2.1.2
       mkdirp: 1.0.4
       yallist: 4.0.0
-
-  temp@0.8.4:
-    dependencies:
-      rimraf: 2.6.3
 
   temp@0.9.4:
     dependencies:
