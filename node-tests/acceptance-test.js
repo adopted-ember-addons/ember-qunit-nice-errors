@@ -1,5 +1,6 @@
 var assert = require('chai').assert;
 var AddonTestApp = require('ember-cli-addon-tests').AddonTestApp;
+// eslint-disable-next-line n/no-missing-require
 var denodeify = require('denodeify');
 var readFile = denodeify(require('fs').readFile);
 

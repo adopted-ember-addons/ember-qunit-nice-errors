@@ -7,5 +7,5 @@ test('passes all assertions', function (assert) {
 
   assert.ok(fooTruthy);
   assert.ok(fooTruthy);
-  assert.equal(5 * 2, 2 * 5);
+  assert.strictEqual(5 * 2, 2 * 5);
 });

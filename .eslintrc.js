@@ -36,6 +36,7 @@ module.exports = {
         './testem.js',
         './blueprints/*/index.js',
         './config/**/*.js',
+        './lib/**/*.js',
         './tests/dummy/config/**/*.js',
       ],
       parserOptions: {
@@ -51,6 +52,20 @@ module.exports = {
       // test files
       files: ['tests/**/*-test.{js,ts}'],
       extends: ['plugin:qunit/recommended'],
+    },
+    // node test files
+    {
+      files: ['node-tests/**/*.js'],
+      excludedFiles: ['node-tests/fixtures/**/*.js'],
+      env: {
+        node: true,
+        mocha: true,
+      },
+      extends: ['plugin:n/recommended'],
+      rules: {
+        'n/no-unpublished-require': 'off',
+        'n/no-extraneous-require': 'off',
+      },
     },
   ],
 };
