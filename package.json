@@ -52,8 +52,8 @@
     "broccoli-persistent-filter": "^1.4.6",
     "ember-cli-babel": "^8.2.0",
     "ember-cli-htmlbars": "^6.3.0",
-    "minimatch": "^3.1.2",
-    "recast": "^0.13.2"
+    "minimatch": "^8.0.0",
+    "recast": "^0.23.11"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.25.1",
