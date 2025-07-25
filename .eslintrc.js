@@ -1,74 +1,71 @@
+'use strict';
+
 module.exports = {
   root: true,
+  parser: '@babel/eslint-parser',
   parserOptions: {
-    ecmaVersion: 2017,
-    sourceType: 'module'
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    requireConfigFile: false,
+    babelOptions: {
+      plugins: [
+        ['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: true }],
+      ],
+    },
   },
-  plugins: [
-    'ember'
-  ],
+  plugins: ['ember'],
   extends: [
     'eslint:recommended',
-    'plugin:ember/recommended'
+    'plugin:ember/recommended',
+    'plugin:prettier/recommended',
   ],
   env: {
-    browser: true
+    browser: true,
   },
-  rules: {
-  },
+  rules: {},
   overrides: [
     // node files
     {
       files: [
-        'index.js',
-        'testem.js',
-        'ember-cli-build.js',
-        'config/**/*.js',
-        'tests/dummy/config/**/*.js',
-        'lib/**/*.js',
-      ],
-      excludedFiles: [
-        'app/**',
-        'addon/**',
+        './.eslintrc.js',
+        './.prettierrc.js',
+        './.stylelintrc.js',
+        './.template-lintrc.js',
+        './ember-cli-build.js',
+        './index.js',
+        './testem.js',
+        './blueprints/*/index.js',
+        './config/**/*.js',
+        './lib/**/*.js',
+        './tests/dummy/config/**/*.js',
       ],
       parserOptions: {
         sourceType: 'script',
-        ecmaVersion: 2015
       },
       env: {
         browser: false,
-        node: true
+        node: true,
       },
-      plugins: ['node'],
-      rules: Object.assign({}, require('eslint-plugin-node').configs.recommended.rules, {
-        // add your custom rules and overrides for node files here
-      })
+      extends: ['plugin:n/recommended'],
     },
-
-    // test files
     {
-      files: ['tests/**/*.js'],
-      excludedFiles: ['tests/dummy/**/*.js'],
-      env: {
-        embertest: true
-      },
-      rules: Object.assign({}, require('eslint-plugin-ember').configs.recommended.rules, {
-        "ember/named-functions-in-promises": "off",
-      })
+      // test files
+      files: ['tests/**/*-test.{js,ts}'],
+      extends: ['plugin:qunit/recommended'],
     },
-
     // node test files
     {
-      files: ['node-tests/*.js', 'node-tests/**/*.js'],
+      files: ['node-tests/**/*.js'],
       excludedFiles: ['node-tests/fixtures/**/*.js'],
       env: {
         node: true,
         mocha: true,
       },
-      rules: Object.assign({}, require('eslint-plugin-node').configs.recommended.rules, {
-        "node/no-unpublished-require": "off",
-        "node/no-extraneous-require": "off",
-      })
-    }
-  ]
+      extends: ['plugin:n/recommended'],
+      rules: {
+        'n/no-unpublished-require': 'off',
+        'n/no-extraneous-require': 'off',
+      },
+    },
+  ],
 };

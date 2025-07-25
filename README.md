@@ -7,6 +7,12 @@ Because expected true, result false is not enough!
 This addon aims to improve the testing experience by defining a nice
 message on those asserts that don't have one set by you.
 
+ ## Compatibility
+
+ - Ember.js v4.12 or above
+ - Ember CLI v4.12 or above
+ - Node.js v18 or above
+
 ## Installation
 
 As easy as `ember install ember-qunit-nice-errors`
