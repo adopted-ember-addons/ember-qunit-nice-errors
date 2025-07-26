@@ -1,4 +1,5 @@
 # ember-qunit-nice-errors
+
 [![CI](https://github.com/adopted-ember-addons/ember-qunit-nice-errors/actions/workflows/ci.yml/badge.svg)](https://github.com/adopted-ember-addons/ember-qunit-nice-errors/actions/workflows/ci.yml)
 
 Because expected true, result false is not enough!
@@ -6,11 +7,11 @@ Because expected true, result false is not enough!
 This addon aims to improve the testing experience by defining a nice
 message on those asserts that don't have one set by you.
 
- ## Compatibility
+## Compatibility
 
- - Ember.js v4.12 or above
- - Ember CLI v4.12 or above
- - Node.js v18 or above
+- Ember.js v4.12 or above
+- Ember CLI v4.12 or above
+- Node.js v18 or above
 
 ## Installation
 
@@ -22,14 +23,15 @@ When you have a test with a failing assertion and no custom message, the default
 As you can see by the following example test and the default ouput below:
 
 ```js
-import { module, test } from 'qunit';
+import { module, test } from "qunit";
 
-module('Unit | ok test');
+module("Unit | ok test");
 
-test('it works', function(assert) {
-  assert.ok(1===3);
+test("it works", function (assert) {
+  assert.ok(1 === 3);
 });
 ```
+
 ![Test failed output without addon](https://github.com/wyeworks/ember-qunit-nice-errors/raw/gh-pages/images/before.png)
 
 But with **ember-qunit-nice-errors** the message is way nicer!
@@ -42,17 +44,19 @@ But with **ember-qunit-nice-errors** the message is way nicer!
 If you want your error messages to include the original test file, line and column where the failed assertion is, just add the following configuration on your `config/environment.js` file:
 
 ```js
-ENV['ember-qunit-nice-errors'] = {
-  showFileInfo: true
+ENV["ember-qunit-nice-errors"] = {
+  showFileInfo: true,
 };
 ```
 
 ##### Before
+
 ```js
-assert.ok(false)
+assert.ok(false);
 ```
 
 ##### After
+
 ```js
 assert.ok(false) at my-app/tests/unit/ok-test.js:17:2
 ```
@@ -60,9 +64,9 @@ assert.ok(false) at my-app/tests/unit/ok-test.js:17:2
 Also note you can enable this only for certain environments:
 
 ```js
-if (environment === 'development') {
-  ENV['ember-qunit-nice-errors'] = {
-    showFileInfo: true
+if (environment === "development") {
+  ENV["ember-qunit-nice-errors"] = {
+    showFileInfo: true,
   };
 }
 ```
@@ -72,8 +76,8 @@ if (environment === 'development') {
 If you fully trust us you can add this option to replace all assertions within your project tests, just add this to your configuration on your `config/environment.js` file:
 
 ```js
-ENV['ember-qunit-nice-errors'] = {
-  completeExistingMessages: true
+ENV["ember-qunit-nice-errors"] = {
+  completeExistingMessages: true,
 };
 ```
 
@@ -82,11 +86,13 @@ Don't worry, the override will still show your orginal messages, it is not a des
 The following example illustrates what is the result of using the option `completeExistingMessages`.
 
 ##### Before
+
 ```js
-assert.ok(1 === 1, 'one should be one');
+assert.ok(1 === 1, "one should be one");
 ```
 
 ##### After
+
 ```js
 assert.ok(1 === 1, "assert.ok(1 === 1, 'one should be one')");
 ```
@@ -98,8 +104,8 @@ addon. You can include/exclude files from being processed by setting custom glob
 rules.
 
 ```js
-ENV['ember-qunit-nice-errors'] = {
-  include: ["**/*-foo.js"]
+ENV["ember-qunit-nice-errors"] = {
+  include: ["**/*-foo.js"],
 };
 ```
 
@@ -108,11 +114,8 @@ glob `**/*-test.js`. If you want to include files and keep the default rules,
 you can write it as follows.
 
 ```js
-ENV['ember-qunit-nice-errors'] = {
-  include: [
-    "**/*-test.js",
-    "**/*-foo.js",
-  ]
+ENV["ember-qunit-nice-errors"] = {
+  include: ["**/*-test.js", "**/*-foo.js"],
 };
 ```
 
@@ -124,8 +127,8 @@ You can exclude specific test files from beign processed by adding exclude
 rules.
 
 ```js
-ENV['ember-qunit-nice-errors'] = {
-  exclude: ["**/my-special-test.js"]
+ENV["ember-qunit-nice-errors"] = {
+  exclude: ["**/my-special-test.js"],
 };
 ```
 
@@ -135,17 +138,16 @@ You can use any expression supported by `minimatch`, see https://www.npmjs.com/p
 
 We are currently supporting all the assertions provided by QUnit, those are:
 
-* `ok`
-* `notOk`
-* `equal`
-* `notEqual`
-* `deepEqual`
-* `notDeepEqual`
-* `propEqual`
-* `notPropEqual`
-* `strictEqual`
-* `notStrictEqual`
-
+- `ok`
+- `notOk`
+- `equal`
+- `notEqual`
+- `deepEqual`
+- `notDeepEqual`
+- `propEqual`
+- `notPropEqual`
+- `strictEqual`
+- `notStrictEqual`
 
 ## Maintainers
 
