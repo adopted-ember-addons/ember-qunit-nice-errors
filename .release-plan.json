@@ -1,0 +1,30 @@
+{
+  "solution": {
+    "ember-qunit-nice-errors": {
+      "impact": "major",
+      "oldVersion": "1.2.1",
+      "newVersion": "2.0.0",
+      "tagName": "latest",
+      "constraints": [
+        {
+          "impact": "major",
+          "reason": "Appears in changelog section :boom: Breaking Change"
+        },
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :bug: Bug Fix"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./package.json"
+    }
+  },
+  "description": "## Release (2025-08-01)\n\n* ember-qunit-nice-errors 2.0.0 (major)\n\n#### :boom: Breaking Change\n* `ember-qunit-nice-errors`\n  * [#79](https://github.com/adopted-ember-addons/ember-qunit-nice-errors/pull/79) Require ember 4.12+, node 20+ ([@RobbieTheWagner](https://github.com/RobbieTheWagner))\n\n#### :rocket: Enhancement\n* `ember-qunit-nice-errors`\n  * [#61](https://github.com/adopted-ember-addons/ember-qunit-nice-errors/pull/61) Allow to configure include and exclude rules ([@san650](https://github.com/san650))\n\n#### :bug: Bug Fix\n* `ember-qunit-nice-errors`\n  * [#67](https://github.com/adopted-ember-addons/ember-qunit-nice-errors/pull/67) Dependencies update to alleviate security warnings ([@jmbejar](https://github.com/jmbejar))\n\n#### :house: Internal\n* `ember-qunit-nice-errors`\n  * [#80](https://github.com/adopted-ember-addons/ember-qunit-nice-errors/pull/80) Switch from release-it to release-plan ([@RobbieTheWagner](https://github.com/RobbieTheWagner))\n\n#### Committers: 3\n- Jorge Bejar ([@jmbejar](https://github.com/jmbejar))\n- Robbie Wagner ([@RobbieTheWagner](https://github.com/RobbieTheWagner))\n- Santiago Ferreira ([@san650](https://github.com/san650))\n"
+}
