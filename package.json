@@ -45,8 +45,8 @@
     "lint:format": "prettier . --cache --check",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
-    "test": "node --test test/*.test.cjs",
-    "test:watch": "node --test --watch test/*.test.cjs"
+    "test": "node --test \"test/**/*.test.cjs\"",
+    "test:watch": "node --test --watch \"test/**/*.test.cjs\""
   },
   "devDependencies": {
     "@babel/core": "^8.0.5",
