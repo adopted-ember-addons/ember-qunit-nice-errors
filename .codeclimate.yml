@@ -1,6 +1,0 @@
-engines:
-  eslint:
-    enabled: false
-    channel: "eslint-4"
-    config:
-      config: .eslintrc.js

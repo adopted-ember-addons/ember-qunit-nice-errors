@@ -1,14 +1,5 @@
-# unconventional js
-/blueprints/*/files/
-/node-tests/fixtures/
-
-# compiled output
-/dist/
-
-# misc
-/coverage/
-!.*
-.*/
-/pnpm-lock.yaml
-ember-cli-update.json
-*.html
+node_modules/
+coverage/
+dist/
+CHANGELOG.md
+pnpm-lock.yaml

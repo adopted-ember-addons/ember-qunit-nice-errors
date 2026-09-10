@@ -2,169 +2,138 @@
 
 [![CI](https://github.com/adopted-ember-addons/ember-qunit-nice-errors/actions/workflows/ci.yml/badge.svg)](https://github.com/adopted-ember-addons/ember-qunit-nice-errors/actions/workflows/ci.yml)
 
-Because expected true, result false is not enough!
+Because _expected true, result false_ is not enough.
 
-This addon aims to improve the testing experience by defining a nice
-message on those asserts that don't have one set by you.
+Gives message-less QUnit assertions a message: their own source text.
 
-## Compatibility
+```js
+// you write
+assert.ok(user.isActive);
 
-- Ember.js v4.12 or above
-- Ember CLI v4.12 or above
-- Node.js v18 or above
+// it compiles to
+assert.ok(user.isActive, 'assert.ok(user.isActive)');
+```
+
+So a failure reports
+
+```
+assert.ok(user.isActive)
+```
+
+instead of
+
+```
+failed, expected argument to be truthy
+```
+
+Only assertions **without** a message are touched. Anything you wrote yourself is left alone.
+
+> **Upgrading from v1?** v2 is a Babel plugin rather than an ember-cli addon, and it needs one line of configuration — installing it is no longer enough. See [MIGRATION.md](./MIGRATION.md).
 
 ## Installation
 
-As easy as `ember install ember-qunit-nice-errors`
+```sh
+pnpm add --save-dev ember-qunit-nice-errors
+```
 
-## Example
+Then add it to your Babel config. **This step is required** — the plugin does nothing until you do.
 
-When you have a test with a failing assertion and no custom message, the default error doesn't say much.
-As you can see by the following example test and the default ouput below:
+### Vite / Embroider
 
 ```js
-import { module, test } from "qunit";
+// babel.config.mjs
+import qunitNiceErrors from 'ember-qunit-nice-errors';
 
-module("Unit | ok test");
+export default {
+  plugins: [
+    qunitNiceErrors,
+    // ...your other plugins
+  ],
+};
+```
 
-test("it works", function (assert) {
-  assert.ok(1 === 3);
+### Classic ember-cli builds
+
+```js
+// ember-cli-build.js
+const app = new EmberApp(defaults, {
+  babel: {
+    plugins: [require.resolve('ember-qunit-nice-errors')],
+  },
 });
 ```
 
-![Test failed output without addon](https://github.com/wyeworks/ember-qunit-nice-errors/raw/gh-pages/images/before.png)
+The same works in an addon's `index.js` and in an engine's `ember-cli-build.js`.
 
-But with **ember-qunit-nice-errors** the message is way nicer!
-![Test failed output with addon](https://github.com/wyeworks/ember-qunit-nice-errors/raw/gh-pages/images/after.png)
+## Compatibility
 
-## Configuration
+- `@babel/core` 7 or 8
+- Node.js 20.13+ or 22+
 
-### showFileInfo
+There is no longer an Ember version requirement — this is a plain Babel plugin. It works under Vite, Embroider and classic builds alike, and in any QUnit suite that runs through Babel.
 
-If you want your error messages to include the original test file, line and column where the failed assertion is, just add the following configuration on your `config/environment.js` file:
+## Options
 
-```js
-ENV["ember-qunit-nice-errors"] = {
-  showFileInfo: true,
-};
-```
+| option                     | type                        | default                                | meaning                                                                               |
+| -------------------------- | --------------------------- | -------------------------------------- | ------------------------------------------------------------------------------------- |
+| `include`                  | `RegExp \| string \| Array` | `[/-test\.(?:[cm]?[jt]sx?\|g[jt]s)$/]` | Which filenames to transform. **Replaces** the default rather than extending it.      |
+| `exclude`                  | `RegExp \| string \| Array` | —                                      | Filenames to skip. Takes precedence over `include`.                                   |
+| `showFileInfo`             | `boolean`                   | `false`                                | Append ` at <path>:<line>:<column>`, relative to Babel's `cwd`.                       |
+| `completeExistingMessages` | `boolean`                   | `false`                                | Also overwrite messages you wrote yourself. Off by default, and rarely what you want. |
 
-##### Before
-
-```js
-assert.ok(false);
-```
-
-##### After
+Strings are compiled with `new RegExp(...)`, so escape accordingly (`'\\.spec\\.js$'`).
 
 ```js
-assert.ok(false) at my-app/tests/unit/ok-test.js:17:2
-```
-
-Also note you can enable this only for certain environments:
-
-```js
-if (environment === "development") {
-  ENV["ember-qunit-nice-errors"] = {
+[
+  'ember-qunit-nice-errors',
+  {
+    include: [/\.spec\.js$/],
+    exclude: [/vendor/],
     showFileInfo: true,
-  };
-}
+  },
+];
 ```
 
-### completeExistingMessages
-
-If you fully trust us you can add this option to replace all assertions within your project tests, just add this to your configuration on your `config/environment.js` file:
+The default pattern is exported if you would rather extend it than replace it:
 
 ```js
-ENV["ember-qunit-nice-errors"] = {
-  completeExistingMessages: true,
-};
+const { DEFAULT_INCLUDE } = require('ember-qunit-nice-errors');
+
+['ember-qunit-nice-errors', { include: [...DEFAULT_INCLUDE, /\.spec\.js$/] }];
 ```
 
-Don't worry, the override will still show your orginal messages, it is not a destructive operation!
+> In v1 `include` and `exclude` were globs read from `config/environment.js`. They are now regular expressions passed as plugin options — see [MIGRATION.md](./MIGRATION.md).
 
-The following example illustrates what is the result of using the option `completeExistingMessages`.
+## Which assertions
 
-##### Before
+`ok`, `notOk`, `equal`, `notEqual`, `strictEqual`, `notStrictEqual`, `deepEqual`, `notDeepEqual`, `propEqual`, `notPropEqual`.
 
-```js
-assert.ok(1 === 1, "one should be one");
+Assertions whose failure output is already descriptive — `throws`, `step`, `verifySteps`, `expect`, `async`, `timeout` — are deliberately left alone.
+
+## How it decides what is an assertion
+
+It resolves the `assert` object through Babel's scope rather than matching the identifier by name. A call is transformed only when its object is the **first parameter of a function passed to a QUnit `test()`** — including `QUnit.test`, `test.only`, `test.skip` and `test.todo`.
+
+That means:
+
+- renamed parameters work — `test('x', function (a) { a.ok(v); })`
+- arrow-function tests work — `test('x', async (assert) => { … })`
+- an unrelated local called `assert` is **not** transformed
+- an `assert` passed to `hooks.beforeEach` is **not** transformed, because it is not a test callback
+
+The last two were gaps in v1, which tracked the most recently seen `test()` call textually and only matched `FunctionExpression`.
+
+It is also idempotent: a call is only matched when its argument count says no message was passed, so re-running the transform cannot append twice.
+
+## Development
+
+```sh
+pnpm install
+pnpm test          # node --test
+pnpm run lint
+pnpm run lint:fix
 ```
-
-##### After
-
-```js
-assert.ok(1 === 1, "assert.ok(1 === 1, 'one should be one')");
-```
-
-### include
-
-By default only test files that match the glob `**/*-test.js` are processed by the
-addon. You can include/exclude files from being processed by setting custom glob
-rules.
-
-```js
-ENV["ember-qunit-nice-errors"] = {
-  include: ["**/*-foo.js"],
-};
-```
-
-Note that by changing the `include` configuration you are overriding the default
-glob `**/*-test.js`. If you want to include files and keep the default rules,
-you can write it as follows.
-
-```js
-ENV["ember-qunit-nice-errors"] = {
-  include: ["**/*-test.js", "**/*-foo.js"],
-};
-```
-
-You can use any expression supported by `minimatch`, see https://www.npmjs.com/package/minimatch for more info.
-
-### exclude
-
-You can exclude specific test files from beign processed by adding exclude
-rules.
-
-```js
-ENV["ember-qunit-nice-errors"] = {
-  exclude: ["**/my-special-test.js"],
-};
-```
-
-You can use any expression supported by `minimatch`, see https://www.npmjs.com/package/minimatch for more info.
-
-## Supported assertions
-
-We are currently supporting all the assertions provided by QUnit, those are:
-
-- `ok`
-- `notOk`
-- `equal`
-- `notEqual`
-- `deepEqual`
-- `notDeepEqual`
-- `propEqual`
-- `notPropEqual`
-- `strictEqual`
-- `notStrictEqual`
-
-## Maintainers
-
-- Diego Acosta ([@acostami](https://github.com/acostami))
-- Federico Kauffman ([@fedekau](https://github.com/fedekau))
-- Samanta de Barros ([@sdebarros](https://github.com/sdebarros))
-- Santiago Ferreira ([@san650](https://github.com/san650))
-
-## Credits
-
-We got inspiration from
-
-- [qunit-helpful](https://github.com/bahmutov/qunit-helpful)
-- [ember-watson](https://github.com/abuiles/ember-watson)
 
 ## License
 
-ember-qunit-nice-errors is licensed under the MIT license.
-
-See [LICENSE](./LICENSE.md) for the full license text.
+MIT
