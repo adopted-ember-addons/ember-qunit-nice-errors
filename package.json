@@ -28,48 +28,45 @@
     "Santiago Ferreira <san650@gmail.com> (https://github.com/san650)",
     "Robbie Wagner <rwwagner90@gmail.com> (https://github.com/RobbieTheWagner)"
   ],
-  "directories": {
-    "doc": "doc",
-    "test": "tests"
+  "type": "commonjs",
+  "exports": {
+    ".": "./src/index.cjs",
+    "./package.json": "./package.json"
   },
+  "main": "./src/index.cjs",
+  "files": [
+    "src",
+    "MIGRATION.md"
+  ],
   "scripts": {
+    "format": "prettier . --cache --write",
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\" --prefixColors auto",
     "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\" --prefixColors auto && pnpm run format",
+    "lint:format": "prettier . --cache --check",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
-    "lint:format": "prettier . --cache --check",
-    "format": "prettier . --cache --write",
     "test": "node --test test/",
     "test:watch": "node --test --watch test/"
   },
   "devDependencies": {
-    "@eslint/js": "^9.32.0",
-    "concurrently": "^9.2.0",
-    "eslint": "^9.32.0",
+    "@babel/core": "^8.0.5",
+    "@eslint/js": "^10.0.1",
+    "concurrently": "^10.0.5",
+    "eslint": "^10.10.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-n": "^17.21.0",
-    "globals": "^16.3.0",
-    "prettier": "^3.6.2",
-    "release-plan": "^0.17.0",
-    "@babel/core": "^7.28.0"
+    "eslint-plugin-n": "^18.3.0",
+    "globals": "^17.12.0",
+    "prettier": "^3.9.6",
+    "release-plan": "^0.20.0"
   },
   "peerDependencies": {
     "@babel/core": "^7.0.0 || ^8.0.0"
   },
-  "packageManager": "pnpm@10.14.0-0+sha512.2cd47a0cbf5f1d1de7693a88307a0ede5be94e0d3b34853d800ee775efbea0650cb562b77605ec80bc8d925f5cd27c4dfe8bb04d3a0b76090784c664450d32d6",
+  "packageManager": "pnpm@12.4.1+sha512.2e81e399d73fe8390dab25e06aa788ab7a5908248d2f5a370f82b481147a6a7a367bf8048f9a6fdb6460f21a66f0542dedb8b94ca2c8723596741920b1656d4c",
   "engines": {
     "node": "^20.13.0 || >= 22"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
-  },
-  "type": "commonjs",
-  "main": "./src/index.cjs",
-  "exports": {
-    ".": "./src/index.cjs",
-    "./package.json": "./package.json"
-  },
-  "files": [
-    "src"
-  ]
+  }
 }

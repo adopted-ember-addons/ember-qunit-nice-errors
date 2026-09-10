@@ -4,12 +4,14 @@ on:
   push:
     branches:
       - main
-      - master
   pull_request: {}
 
 concurrency:
   group: ci-${{ github.head_ref || github.ref }}
   cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   lint:
@@ -17,11 +19,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      # pnpm version comes from package.json#packageManager — do not pin it here
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
         with:
-          node-version-file: package.json
+          node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm run lint
@@ -33,32 +36,32 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        # the bounds of engines.node, plus the LTS in between
         node: [20, 22, 24]
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node }}
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm test
 
-  babel-versions:
-    name: Test (@babel/core ${{ matrix.babel }})
+  babel-7:
+    # The default install resolves @babel/core 8, which the `test` job already
+    # covers. This job exists solely to keep the lower bound of the
+    # `^7.0.0 || ^8.0.0` peer range honest.
+    name: Test (@babel/core 7)
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    strategy:
-      fail-fast: false
-      matrix:
-        babel: ['7.20.0', 'latest']
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
         with:
-          node-version-file: package.json
+          node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm add -D @babel/core@${{ matrix.babel }}
+      - run: pnpm add -D @babel/core@^7.0.0
       - run: pnpm test

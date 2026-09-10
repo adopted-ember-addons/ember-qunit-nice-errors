@@ -72,8 +72,8 @@ function isAssertBinding(path, name, t) {
   const parent = fn.parentPath;
   return Boolean(
     parent &&
-      parent.isCallExpression() &&
-      isQUnitTestCall(parent.node.callee, t),
+    parent.isCallExpression() &&
+    isQUnitTestCall(parent.node.callee, t),
   );
 }
 
