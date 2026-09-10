@@ -68,7 +68,7 @@ The same works in an addon's `index.js` and in an engine's `ember-cli-build.js`.
 ## Compatibility
 
 - `@babel/core` 7 or 8
-- Node.js 20.13+ or 22+
+- Node.js 22 or above
 
 There is no longer an Ember version requirement — this is a plain Babel plugin. It works under Vite, Embroider and classic builds alike, and in any QUnit suite that runs through Babel.
 
