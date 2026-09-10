@@ -2,7 +2,12 @@
 
 v3 is the same idea delivered differently: a **Babel plugin** instead of an ember-cli addon.
 
-**The one thing you must not miss:** v2 worked the moment it was installed. v3 does not. If you upgrade without adding it to your Babel config, nothing errors — your assertions simply stop getting messages, and you find out the next time a test fails and tells you nothing useful.
+There are two breaking changes:
+
+1. **It must be added to your Babel config.** Installing it is no longer enough.
+2. **Node 22 or above is required.**
+
+**The one thing you must not miss** is the first. v2 worked the moment it was installed; v3 does not. If you upgrade without adding it to your Babel config, nothing errors — your assertions simply stop getting messages, and you find out the next time a test fails and tells you nothing useful.
 
 ## Why it changed
 
@@ -11,6 +16,12 @@ v2 worked by hooking ember-cli's `preprocessTree('test', …)` and running a `br
 That hook does not exist in the Embroider **v2 addon format**, and it never fires in a **Vite**-built app. So on a modern Ember build v2 was already silently inert — installed, resolved, and transforming nothing.
 
 A Babel plugin runs in both pipelines, which is the only way to keep this working going forward. It also stops being Ember-specific: any QUnit suite compiled with Babel can use it.
+
+## Node 22+
+
+Node 20 reached end-of-life on 2026-04-30 and no longer receives security patches, so it is no longer supported. `engines` is now `>= 22`.
+
+If you are still on Node 20, upgrade the runtime first — that part is unrelated to this package and worth doing on its own.
 
 ## What to change
 
