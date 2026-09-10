@@ -1,14 +1,14 @@
-# Migrating from v1 to v2
+# Migrating from v2 to v3
 
-v2 is the same idea delivered differently: a **Babel plugin** instead of an ember-cli addon.
+v3 is the same idea delivered differently: a **Babel plugin** instead of an ember-cli addon.
 
-**The one thing you must not miss:** v1 worked the moment it was installed. v2 does not. If you upgrade without adding it to your Babel config, nothing errors — your assertions simply stop getting messages, and you find out the next time a test fails and tells you nothing useful.
+**The one thing you must not miss:** v2 worked the moment it was installed. v3 does not. If you upgrade without adding it to your Babel config, nothing errors — your assertions simply stop getting messages, and you find out the next time a test fails and tells you nothing useful.
 
 ## Why it changed
 
-v1 worked by hooking ember-cli's `preprocessTree('test', …)` and running a `broccoli-persistent-filter` over your test tree.
+v2 worked by hooking ember-cli's `preprocessTree('test', …)` and running a `broccoli-persistent-filter` over your test tree.
 
-That hook does not exist in the Embroider **v2 addon format**, and it never fires in a **Vite**-built app. So on a modern Ember build v1 was already silently inert — installed, resolved, and transforming nothing.
+That hook does not exist in the Embroider **v2 addon format**, and it never fires in a **Vite**-built app. So on a modern Ember build v2 was already silently inert — installed, resolved, and transforming nothing.
 
 A Babel plugin runs in both pipelines, which is the only way to keep this working going forward. It also stops being Ember-specific: any QUnit suite compiled with Babel can use it.
 
@@ -89,7 +89,7 @@ Remove the `'ember-qunit-nice-errors'` block from `config/environment.js` — it
 
 `include` and `exclude` were **minimatch globs**. They are now **regular expressions** (or strings compiled with `new RegExp(...)`).
 
-| v1 glob               | v2 regular expression    |
+| v2 glob               | v3 regular expression    |
 | --------------------- | ------------------------ |
 | `**/*-test.js`        | `/-test\.js$/`           |
 | `**/vendor/**`        | `/vendor/`               |
@@ -107,7 +107,7 @@ import qunitNiceErrors, { DEFAULT_INCLUDE } from 'ember-qunit-nice-errors';
 
 ### 4. Options that are gone
 
-| v1 option    | status                                                                                   |
+| v2 option    | status                                                                                   |
 | ------------ | ---------------------------------------------------------------------------------------- |
 | `annotation` | Removed. It named the broccoli node in build output; there is no broccoli node any more. |
 | `persist`    | Removed. It controlled broccoli's persistent cache; Babel does its own caching.          |
@@ -127,9 +127,9 @@ Or write a deliberately failing message-less assertion and confirm the reported 
 
 ## What you gain
 
-v2 catches cases v1 silently skipped, because it resolves `assert` through Babel's scope instead of tracking the most recently seen `test()` call and matching only `FunctionExpression`:
+v3 catches cases v2 silently skipped, because it resolves `assert` through Babel's scope instead of tracking the most recently seen `test()` call and matching only `FunctionExpression`:
 
-| case                                    | v1                  | v2  |
+| case                                    | v2                  | v3  |
 | --------------------------------------- | ------------------- | --- |
 | `test('x', function (assert) { … })`    | ✅                  | ✅  |
 | `test('x', async (assert) => { … })`    | ❌ silently skipped | ✅  |
@@ -138,4 +138,4 @@ v2 catches cases v1 silently skipped, because it resolves `assert` through Babel
 
 If your suite uses arrow-function tests, expect assertions that previously had no message to start reporting one. That is the fix working — but it does change what appears in CI output.
 
-Conversely, v2 is **stricter** about what counts as an assertion. An `assert` that is not a test callback's first parameter — for example one passed to `hooks.beforeEach` — is no longer transformed. v1 would sometimes transform these by accident.
+Conversely, v3 is **stricter** about what counts as an assertion. An `assert` that is not a test callback's first parameter — for example one passed to `hooks.beforeEach` — is no longer transformed. v2 would sometimes transform these by accident.

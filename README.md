@@ -28,7 +28,7 @@ failed, expected argument to be truthy
 
 Only assertions **without** a message are touched. Anything you wrote yourself is left alone.
 
-> **Upgrading from v1?** v2 is a Babel plugin rather than an ember-cli addon, and it needs one line of configuration — installing it is no longer enough. See [MIGRATION.md](./MIGRATION.md).
+> **Upgrading from v2?** v3 is a Babel plugin rather than an ember-cli addon, and it needs one line of configuration — installing it is no longer enough. See [MIGRATION.md](./MIGRATION.md).
 
 ## Installation
 
@@ -102,7 +102,7 @@ const { DEFAULT_INCLUDE } = require('ember-qunit-nice-errors');
 ['ember-qunit-nice-errors', { include: [...DEFAULT_INCLUDE, /\.spec\.js$/] }];
 ```
 
-> In v1 `include` and `exclude` were globs read from `config/environment.js`. They are now regular expressions passed as plugin options — see [MIGRATION.md](./MIGRATION.md).
+> In v2 `include` and `exclude` were globs read from `config/environment.js`. They are now regular expressions passed as plugin options — see [MIGRATION.md](./MIGRATION.md).
 
 ## Which assertions
 
@@ -121,7 +121,7 @@ That means:
 - an unrelated local called `assert` is **not** transformed
 - an `assert` passed to `hooks.beforeEach` is **not** transformed, because it is not a test callback
 
-The last two were gaps in v1, which tracked the most recently seen `test()` call textually and only matched `FunctionExpression`.
+The last two were gaps in v2, which tracked the most recently seen `test()` call textually and only matched `FunctionExpression`.
 
 It is also idempotent: a call is only matched when its argument count says no message was passed, so re-running the transform cannot append twice.
 
