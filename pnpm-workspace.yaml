@@ -1,0 +1,16 @@
+# we don't want addons to be bad citizens of the ecosystem
+autoInstallPeers: false
+
+# we want true isolation,
+# if a dependency is not declared, we want an error
+resolvePeersFromWorkspaceRoot: false
+
+minimumReleaseAgeExclude:
+  - '@babel/compat-data@8.0.5'
+  - '@babel/core@8.0.5'
+  - '@babel/generator@8.0.5'
+  - '@babel/helper-compilation-targets@8.0.5'
+  - '@babel/helpers@8.0.5'
+  - '@babel/parser@8.0.5'
+  - '@babel/traverse@8.0.5'
+  - '@babel/types@8.0.5'

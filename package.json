@@ -1,16 +1,17 @@
 {
   "name": "ember-qunit-nice-errors",
   "version": "2.0.0",
-  "description": "Because expected true, result false is not enough!",
+  "description": "Babel plugin that gives message-less QUnit assertions a message: their own source text.",
   "keywords": [
-    "assertion",
-    "ember",
-    "ember-addon",
-    "ember-cli",
-    "error",
-    "message",
+    "babel",
+    "babel-plugin",
     "qunit",
-    "test"
+    "assert",
+    "assertion",
+    "testing",
+    "ember",
+    "error",
+    "message"
   ],
   "homepage": "https://github.com/adopted-ember-addons/ember-qunit-nice-errors#readme",
   "bugs": "https://github.com/adopted-ember-addons/ember-qunit-nice-errors/issues",
@@ -27,91 +28,45 @@
     "Santiago Ferreira <san650@gmail.com> (https://github.com/san650)",
     "Robbie Wagner <rwwagner90@gmail.com> (https://github.com/RobbieTheWagner)"
   ],
-  "directories": {
-    "doc": "doc",
-    "test": "tests"
+  "type": "commonjs",
+  "exports": {
+    ".": "./src/index.cjs",
+    "./package.json": "./package.json"
   },
+  "main": "./src/index.cjs",
+  "files": [
+    "src",
+    "MIGRATION.md"
+  ],
   "scripts": {
-    "build": "ember build --environment=production",
-    "ember-test": "ember try:each",
-    "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
-    "lint:css": "stylelint \"**/*.css\"",
-    "lint:css:fix": "concurrently \"pnpm:lint:css -- --fix\"",
-    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\"",
-    "lint:hbs:fix": "ember-template-lint . --fix",
+    "format": "prettier . --cache --write",
+    "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\" --prefixColors auto",
+    "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\" --prefixColors auto && pnpm run format",
+    "lint:format": "prettier . --cache --check",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
-    "node-test": "mocha --inline-diffs --colors node-tests/*-test.js",
-    "start": "ember serve",
-    "test": "concurrently \"pnpm:lint\" \"pnpm:test:*\" --names \"lint,test:\"",
-    "test:ember": "ember test",
-    "test:ember-compatibility": "ember try:each"
-  },
-  "dependencies": {
-    "@babel/core": "^7.25.2",
-    "broccoli-persistent-filter": "^2.3.1",
-    "ember-cli-babel": "^8.2.0",
-    "ember-cli-htmlbars": "^6.3.0",
-    "minimatch": "^8.0.0",
-    "recast": "^0.23.11"
+    "test": "node --test \"test/**/*.test.cjs\"",
+    "test:watch": "node --test --watch \"test/**/*.test.cjs\""
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.25.1",
-    "@babel/plugin-proposal-decorators": "^7.24.7",
-    "@ember/optional-features": "^2.1.0",
-    "@ember/test-helpers": "^3.3.1",
-    "@embroider/test-setup": "^4.0.0",
-    "@glimmer/component": "^1.1.2",
-    "@glimmer/tracking": "^1.1.2",
-    "broccoli-asset-rev": "^3.0.0",
-    "broccoli-test-helpers": "0.0.9",
-    "chai": "^5.2.1",
-    "concurrently": "^8.2.2",
-    "ember-auto-import": "^2.8.1",
-    "ember-cli": "~5.12.0",
-    "ember-cli-clean-css": "^3.0.0",
-    "ember-cli-dependency-checker": "^3.3.2",
-    "ember-cli-inject-live-reload": "^2.1.0",
-    "ember-cli-sri": "^2.1.1",
-    "ember-cli-terser": "^4.0.2",
-    "ember-load-initializers": "^2.1.2",
-    "ember-page-title": "^8.2.3",
-    "ember-qunit": "^8.1.0",
-    "ember-resolver": "^12.0.1",
-    "ember-source": "~5.12.0",
-    "ember-source-channel-url": "^3.0.0",
-    "ember-template-lint": "^6.0.0",
-    "ember-try": "^3.0.0",
-    "eslint": "^8.57.1",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-ember": "^12.2.1",
-    "eslint-plugin-n": "^16.6.2",
-    "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-qunit": "^8.1.2",
-    "loader.js": "^4.7.0",
-    "mocha": "^11.7.1",
-    "prettier": "^3.3.3",
-    "qunit": "^2.22.0",
-    "qunit-dom": "^3.2.1",
-    "release-plan": "^0.16.0",
-    "stylelint": "^15.11.0",
-    "stylelint-config-standard": "^34.0.0",
-    "stylelint-prettier": "^4.1.0",
-    "webpack": "^5.95.0"
+    "@babel/core": "^8.0.5",
+    "@eslint/js": "^10.0.1",
+    "concurrently": "^10.0.5",
+    "eslint": "^10.10.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-n": "^18.3.0",
+    "globals": "^17.12.0",
+    "prettier": "^3.9.6",
+    "release-plan": "^0.20.0"
   },
   "peerDependencies": {
-    "ember-source": ">= 4.0.0"
+    "@babel/core": "^7.0.0 || ^8.0.0"
   },
+  "packageManager": "pnpm@12.4.1+sha512.2e81e399d73fe8390dab25e06aa788ab7a5908248d2f5a370f82b481147a6a7a367bf8048f9a6fdb6460f21a66f0542dedb8b94ca2c8723596741920b1656d4c",
   "engines": {
-    "node": ">= 20"
+    "node": ">= 22"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
-  },
-  "ember": {
-    "edition": "octane"
-  },
-  "ember-addon": {
-    "configPath": "tests/dummy/config"
   }
 }
