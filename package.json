@@ -1,6 +1,6 @@
 {
   "name": "ember-qunit-nice-errors",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Babel plugin that gives message-less QUnit assertions a message: their own source text.",
   "keywords": [
     "babel",

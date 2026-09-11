@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2026-09-11)
+
+* ember-qunit-nice-errors 3.0.0 (major)
+
+#### :boom: Breaking Change
+* `ember-qunit-nice-errors`
+  * [#83](https://github.com/adopted-ember-addons/ember-qunit-nice-errors/pull/83) feat!: replace the ember-cli addon with a Babel plugin ([@aklkv](https://github.com/aklkv))
+
+#### Committers: 1
+- Alexey Kulakov ([@aklkv](https://github.com/aklkv))
+
 ## Release (2025-08-01)
 
 * ember-qunit-nice-errors 2.0.0 (major)
